@@ -1,5 +1,5 @@
 ---
-
+import "@fontsource/geist-sans";
 ---
 
 <html lang="en">
@@ -30,12 +30,16 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>Robert Abreu - Software Engineer</title>
 		<style>
+			body {
+				font-family: "Geist Sans", sans-serif;
+			}
+
 			.loader {
 				animation: spin 2s linear infinite;
 			}
 
 			.icon-container {
-				display: inline-block; /* or 'block', depending on your layout needs */
+				display: inline-block;
 				transition: transform 0.5s ease;
 			}
 
@@ -50,7 +54,7 @@
 		</style>
 	</head>
 	<body
-		class="font-mono h-screen text-black bg-white dark:bg-black dark:text-white flex flex-col justify-between"
+		class="h-screen text-white bg-black dark:bg-black dark:text-white flex flex-col justify-between"
 	>
 		<header class="container mx-auto p-4 text-center">
 			<h1 class="text-4xl font-bold">Robert Abreu</h1>
@@ -75,16 +79,14 @@
 					>
 				</div>
 			</section>
-			<section
-				class="transition-colors dark:text-black dark:hover:text-white"
-			>
+			<section class="transition-colors text-white">
 				<h2 class="text-2xl font-bold">About Me</h2>
-				<p class="w-auto m-auto md:w-2/4">
-					I'm a passionate software engineer with a knack for creating
+				<p class="about-me w-auto m-auto md:w-2/4">
+					<!-- I'm a passionate software engineer with a knack for creating
 					efficient and scalable web applications. With a deep
 					understanding of modern web technologies, I strive to build
 					solutions that enhance user experiences and solve complex
-					problems.
+					problems. -->
 				</p>
 			</section>
 		</main>
@@ -218,12 +220,31 @@
 			<p>© 2024</p>
 		</footer>
 		<script is:inline>
+			const aboutMe =
+				"I'm a passionate software engineer with a knack for creating efficient and scalable web applications. With a deep" +
+				" understanding of modern web technologies, I strive to build" +
+				" solutions that enhance user experiences and solve complex" +
+				" problems.";
+
+			const cursor = "█";
+			function writeOut() {
+				const aboutMeContainer = document.querySelector(".about-me");
+				let i = 0;
+				const typingInterval = setInterval(() => {
+					aboutMeContainer.innerText =
+						aboutMe.substring(0, i++) + cursor;
+					if (i > text.length) {
+						clearInterval(typingInterval);
+						aboutMeContainer.innerText = aboutMe;
+					}
+				}, 50);
+			}
+
 			document.addEventListener("DOMContentLoaded", function () {
 				const iconContainer = document.querySelector(".icon-container");
 				const hoverTarget = document.querySelector(".icon-parent");
-
 				if (iconContainer && hoverTarget) {
-					hoverTarget.addEventListener("mouseenter", () => {
+					iconContainer.addEventListener("mouseenter", () => {
 						const maxVx =
 							window.innerWidth - iconContainer.offsetWidth;
 						const maxVy =
@@ -233,11 +254,8 @@
 						const vy = (Math.random() * maxVy) / 2;
 						iconContainer.style.transform = `translate(${vx}px, ${vy}px)`;
 					});
-
-					hoverTarget.addEventListener("mouseleave", () => {
-						iconContainer.style.transform = `translate(-50%, -50%)`;
-					});
 				}
+				setTimeout(writeOut, 2000);
 			});
 		</script>
 	</body>
