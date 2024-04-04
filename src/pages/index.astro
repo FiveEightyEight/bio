@@ -1,123 +1,254 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<svg
-			class="astro-a"
-			width="495"
-			height="623"
-			viewBox="0 0 495 623"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-		>
-			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
-				d="M167.19 364.254C83.4786 364.254 0 404.819 0 404.819C0 404.819 141.781 19.4876 142.087 18.7291C146.434 7.33701 153.027 0 162.289 0H332.441C341.703 0 348.574 7.33701 352.643 18.7291C352.92 19.5022 494.716 404.819 494.716 404.819C494.716 404.819 426.67 364.254 327.525 364.254L264.41 169.408C262.047 159.985 255.147 153.581 247.358 153.581C239.569 153.581 232.669 159.985 230.306 169.408L167.19 364.254ZM160.869 530.172C160.877 530.18 160.885 530.187 160.894 530.195L160.867 530.181C160.868 530.178 160.868 530.175 160.869 530.172ZM136.218 411.348C124.476 450.467 132.698 504.458 160.869 530.172C160.997 529.696 161.125 529.242 161.248 528.804C161.502 527.907 161.737 527.073 161.917 526.233C165.446 509.895 178.754 499.52 195.577 500.01C211.969 500.487 220.67 508.765 223.202 527.254C224.141 534.12 224.23 541.131 224.319 548.105C224.328 548.834 224.337 549.563 224.347 550.291C224.563 566.098 228.657 580.707 237.264 593.914C245.413 606.426 256.108 615.943 270.749 622.478C270.593 621.952 270.463 621.508 270.35 621.126C270.045 620.086 269.872 619.499 269.685 618.911C258.909 585.935 266.668 563.266 295.344 543.933C298.254 541.971 301.187 540.041 304.12 538.112C310.591 533.854 317.059 529.599 323.279 525.007C345.88 508.329 360.09 486.327 363.431 457.844C364.805 446.148 363.781 434.657 359.848 423.275C358.176 424.287 356.587 425.295 355.042 426.275C351.744 428.366 348.647 430.33 345.382 431.934C303.466 452.507 259.152 455.053 214.03 448.245C184.802 443.834 156.584 436.019 136.218 411.348Z"
-				fill="url(#paint0_linear_1805_24383)"></path>
-			<defs>
-				<linearGradient
-					id="paint0_linear_1805_24383"
-					x1="247.358"
-					y1="0"
-					x2="247.358"
-					y2="622.479"
-					gradientUnits="userSpaceOnUse"
-				>
-					<stop stop-opacity="0.9"></stop>
-					<stop offset="1" stop-opacity="0.2"></stop>
-				</linearGradient>
-			</defs>
-		</svg>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<html lang="en">
+	<!--
 
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
+		 ___       __    _______    ___        ________   ________   _____ ______    _______      
+		 |\  \     |\  \ |\  ___ \  |\  \      |\   ____\ |\   __  \ |\   _ \  _   \ |\  ___ \     
+		 \ \  \    \ \  \\ \   __/| \ \  \     \ \  \___| \ \  \|\  \\ \  \\\__\ \  \\ \   __/|    
+		  \ \  \  __\ \  \\ \  \_|/__\ \  \     \ \  \     \ \  \\\  \\ \  \\|__| \  \\ \  \_|/__  
+		   \ \  \|\__\_\  \\ \  \_|\ \\ \  \____ \ \  \____ \ \  \\\  \\ \  \    \ \  \\ \  \_|\ \ 
+		    \ \____________\\ \_______\\ \_______\\ \_______\\ \_______\\ \__\    \ \__\\ \_______\
+		     \|____________| \|_______| \|_______| \|_______| \|_______| \|__|     \|__| \|_______|
+
+			🚧 Site Under Construction 🚧
+
+		Thanks for checking out the source code! I am still putting together the idea for what I want this to be; stay tuned...
+
+
+
+
+
+	-->
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Robert Abreu Bio" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Robert Abreu - Software Engineer</title>
+		<style>
+			.loader {
+				animation: spin 2s linear infinite;
+			}
+
+			.icon-container {
+				display: inline-block; /* or 'block', depending on your layout needs */
+				transition: transform 0.5s ease;
+			}
+
+			@keyframes spin {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body
+		class="font-mono h-screen text-black bg-white dark:bg-black dark:text-white flex flex-col justify-between"
+	>
+		<header class="container mx-auto p-4 text-center">
+			<h1 class="text-4xl font-bold">Robert Abreu</h1>
+			<p class="text-xl">Software Engineer</p>
+		</header>
+		<main class="container mx-auto p-4 text-center">
+			<section class="icon-parent m-auto min-h-1.5 min-w-1.5 mb-10">
+				<div class="cursor-pointer icon-container">
+					<svg
+						class="loader"
+						id="fi_2767294"
+						enable-background="new 0 0 128 128"
+						height="20"
+						viewBox="0 0 128 128"
+						width="20"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="#575757"
+						><path
+							id="Sync"
+							d="m16 64c0 2.209-1.791 4-4 4s-4-1.791-4-4c0-30.879 25.121-56 56-56 15.391 0 29.632 6.133 40 16.693v-12.693c0-2.209 1.791-4 4-4s4 1.791 4 4v24c0 2.209-1.791 4-4 4h-24c-2.209 0-4-1.791-4-4s1.791-4 4-4h15.908c-8.975-10.096-21.886-16-35.908-16-26.467 0-48 21.533-48 48zm100-4c-2.209 0-4 1.791-4 4 0 26.467-21.533 48-48 48-14.022 0-26.933-5.904-35.908-16h15.908c2.209 0 4-1.791 4-4s-1.791-4-4-4h-24c-2.209 0-4 1.791-4 4v24c0 2.209 1.791 4 4 4s4-1.791 4-4v-12.693c10.368 10.56 24.609 16.693 40 16.693 30.879 0 56-25.121 56-56 0-2.209-1.791-4-4-4z"
+						></path></svg
+					>
+				</div>
+			</section>
+			<section
+				class="transition-colors dark:text-black dark:hover:text-white"
+			>
+				<h2 class="text-2xl font-bold">About Me</h2>
+				<p class="w-auto m-auto md:w-2/4">
+					I'm a passionate software engineer with a knack for creating
+					efficient and scalable web applications. With a deep
+					understanding of modern web technologies, I strive to build
+					solutions that enhance user experiences and solve complex
+					problems.
+				</p>
+			</section>
+		</main>
+		<footer class="container mx-auto p-4 text-center">
+			<section class="mt-6">
+				<div class="flex justify-center gap-4 mt-4">
+					<a
+						class="flex flex-col items-center"
+						href="https://www.linkedin.com/in/robert-abreu/"
+						target="_blank"
+						class="text-gray-900 dark:text-white hover:underline"
+					>
+						<section>
+							<svg
+								fill="#575757"
+								height="20"
+								viewBox="0 0 176 176"
+								width="20"
+								xmlns="http://www.w3.org/2000/svg"
+								><g id="Layer_2" data-name="Layer 2"
+									><g id="linkedin"
+										><path
+											id="icon"
+											d="m152 0h-128a24 24 0 0 0 -24 24v128a24 24 0 0 0 24 24h128a24 24 0 0 0 24-24v-128a24 24 0 0 0 -24-24zm-92 139.28a3.71 3.71 0 0 1 -3.71 3.72h-15.81a3.71 3.71 0 0 1 -3.72-3.72v-66.28a3.72 3.72 0 0 1 3.72-3.72h15.81a3.72 3.72 0 0 1 3.71 3.72zm-11.62-76.28a15 15 0 1 1 15-15 15 15 0 0 1 -15 15zm94.26 76.54a3.41 3.41 0 0 1 -3.42 3.42h-17a3.41 3.41 0 0 1 -3.42-3.42v-31.05c0-4.64 1.36-20.32-12.13-20.32-10.45 0-12.58 10.73-13 15.55v35.86a3.42 3.42 0 0 1 -3.37 3.42h-16.42a3.41 3.41 0 0 1 -3.41-3.42v-66.87a3.41 3.41 0 0 1 3.41-3.42h16.42a3.42 3.42 0 0 1 3.42 3.42v5.78c3.88-5.83 9.63-10.31 21.9-10.31 27.18 0 27 25.38 27 39.32z"
+										></path></g
+									></g
+								></svg
+							>
+						</section>
+						<p>LinkedIn</p>
+					</a>
+					<a
+						class="flex flex-col items-center"
+						href="https://github.com/FiveEightyEight"
+						target="_blank"
+						class="text-gray-900 dark:text-white hover:underline"
+					>
+						<section>
+							<!--?xml version="1.0" encoding="iso-8859-1"?-->
+							<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+							<svg
+								fill="#575757"
+								version="1.1"
+								id="Capa_1"
+								xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink"
+								x="0px"
+								y="0px"
+								width="20"
+								height="20"
+								viewBox="0 0 438.536 438.536"
+								style="enable-background:new 0 0 438.536 438.536;"
+								xml:space="preserve"
+							>
+								<g>
+									<g>
+										<path
+											d="M158.173,352.599c-3.049,0.568-4.381,1.999-3.999,4.281c0.38,2.283,2.093,3.046,5.138,2.283
+			c3.049-0.76,4.38-2.095,3.997-3.997C162.931,353.074,161.218,352.216,158.173,352.599z"
+										></path>
+										<path
+											d="M141.898,354.885c-3.046,0-4.568,1.041-4.568,3.139c0,2.474,1.619,3.518,4.853,3.138c3.046,0,4.57-1.047,4.57-3.138
+			C146.753,355.553,145.134,354.502,141.898,354.885z"
+										></path>
+										<path
+											d="M119.629,354.022c-0.76,2.095,0.478,3.519,3.711,4.284c2.855,1.137,4.664,0.568,5.424-1.714
+			c0.572-2.091-0.666-3.61-3.711-4.568C122.197,351.265,120.39,351.922,119.629,354.022z"
+										></path>
+										<path
+											d="M414.41,24.123C398.326,8.042,378.964,0,356.309,0H82.225C59.577,0,40.208,8.042,24.123,24.123
+			C8.042,40.207,0,59.576,0,82.225v274.088c0,22.65,8.042,42.017,24.123,58.098c16.084,16.084,35.454,24.126,58.102,24.126h63.953
+			c4.184,0,7.327-0.144,9.42-0.424c2.092-0.288,4.184-1.526,6.279-3.717c2.096-2.187,3.14-5.376,3.14-9.562
+			c0-0.568-0.05-7.046-0.144-19.417c-0.097-12.375-0.144-22.176-0.144-29.41l-6.567,1.143c-4.187,0.76-9.469,1.095-15.846,0.999
+			c-6.374-0.096-12.99-0.76-19.841-1.998c-6.855-1.239-13.229-4.093-19.13-8.562c-5.898-4.477-10.085-10.328-12.56-17.559
+			l-2.856-6.571c-1.903-4.373-4.899-9.229-8.992-14.554c-4.093-5.332-8.232-8.949-12.419-10.852l-1.999-1.428
+			c-1.331-0.951-2.568-2.098-3.711-3.429c-1.141-1.335-1.997-2.669-2.568-3.997c-0.571-1.335-0.097-2.43,1.427-3.289
+			c1.524-0.855,4.281-1.279,8.28-1.279l5.708,0.855c3.808,0.76,8.516,3.042,14.134,6.851c5.614,3.806,10.229,8.754,13.846,14.843
+			c4.38,7.806,9.657,13.75,15.846,17.843c6.184,4.097,12.419,6.143,18.699,6.143s11.704-0.476,16.274-1.424
+			c4.565-0.954,8.848-2.385,12.847-4.288c1.713-12.751,6.377-22.559,13.988-29.41c-10.848-1.143-20.602-2.854-29.265-5.14
+			c-8.658-2.286-17.605-5.995-26.835-11.136c-9.234-5.14-16.894-11.512-22.985-19.13c-6.09-7.618-11.088-17.61-14.987-29.978
+			c-3.901-12.375-5.852-26.652-5.852-42.829c0-23.029,7.521-42.637,22.557-58.814c-7.044-17.32-6.379-36.732,1.997-58.242
+			c5.52-1.714,13.706-0.428,24.554,3.855c10.85,4.286,18.794,7.951,23.84,10.992c5.046,3.042,9.089,5.614,12.135,7.71
+			c17.705-4.949,35.976-7.423,54.818-7.423c18.841,0,37.115,2.474,54.821,7.423l10.849-6.852c7.426-4.57,16.18-8.757,26.269-12.562
+			c10.088-3.806,17.795-4.854,23.127-3.14c8.562,21.51,9.328,40.922,2.279,58.241c15.036,16.179,22.559,35.786,22.559,58.815
+			c0,16.18-1.951,30.505-5.852,42.969c-3.898,12.467-8.939,22.463-15.13,29.981c-6.184,7.519-13.894,13.843-23.124,18.986
+			c-9.232,5.137-18.178,8.853-26.84,11.132c-8.661,2.286-18.414,4.004-29.263,5.147c9.891,8.562,14.839,22.072,14.839,40.538v68.238
+			c0,3.237,0.472,5.852,1.424,7.851c0.958,1.998,2.478,3.374,4.571,4.141c2.102,0.76,3.949,1.235,5.571,1.424
+			c1.622,0.191,3.949,0.287,6.995,0.287h63.953c22.648,0,42.018-8.042,58.095-24.126c16.084-16.084,24.126-35.454,24.126-58.102
+			V82.225C438.533,59.576,430.491,40.204,414.41,24.123z"
+										></path>
+										<path
+											d="M86.793,319.195c-1.331,0.948-1.141,2.471,0.572,4.565c1.906,1.902,3.427,2.189,4.57,0.855
+			c1.331-0.948,1.141-2.471-0.575-4.569C89.458,318.336,87.936,318.049,86.793,319.195z"
+										></path>
+										<path
+											d="M77.374,312.057c-0.57,1.335,0.096,2.478,1.999,3.426c1.521,0.955,2.762,0.767,3.711-0.568
+			c0.57-1.335-0.096-2.478-1.999-3.433C79.182,310.91,77.945,311.102,77.374,312.057z"
+										></path>
+										<path
+											d="M95.646,330.331c-1.715,0.948-1.715,2.666,0,5.137c1.713,2.478,3.328,3.142,4.853,1.998c1.714-1.334,1.714-3.142,0-5.427
+			C98.978,329.571,97.359,328.993,95.646,330.331z"
+										></path>
+										<path
+											d="M105.641,343.174c-1.714,1.526-1.336,3.327,1.142,5.428c2.281,2.279,4.185,2.566,5.708,0.849
+			c1.524-1.519,1.143-3.326-1.142-5.42C109.068,341.751,107.164,341.463,105.641,343.174z"
+										></path>
+									</g>
+								</g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+								<g> </g>
+							</svg>
+						</section>
+						<p>GitHub</p>
+					</a>
+				</div>
+			</section>
+			<p>© 2024</p>
+		</footer>
+		<script is:inline>
+			document.addEventListener("DOMContentLoaded", function () {
+				const iconContainer = document.querySelector(".icon-container");
+				const hoverTarget = document.querySelector(".icon-parent");
+
+				if (iconContainer && hoverTarget) {
+					hoverTarget.addEventListener("mouseenter", () => {
+						const maxVx =
+							window.innerWidth - iconContainer.offsetWidth;
+						const maxVy =
+							window.innerHeight - iconContainer.offsetHeight;
+
+						const vx = (Math.random() * maxVx) / 2;
+						const vy = (Math.random() * maxVy) / 2;
+						iconContainer.style.transform = `translate(${vx}px, ${vy}px)`;
+					});
+
+					hoverTarget.addEventListener("mouseleave", () => {
+						iconContainer.style.transform = `translate(-50%, -50%)`;
+					});
+				}
+			});
+		</script>
+	</body>
+
+	<!-- 
+			 _______  _                _______  _         _                   _______  _         _           
+			(_______)(_)              (_______)(_)       | |      _          (_______)(_)       | |      _   
+			 _____    _  _   _  _____  _____    _   ____ | |__  _| |_  _   _  _____    _   ____ | |__  _| |_ 
+			|  ___)  | || | | || ___ ||  ___)  | | / _  ||  _ \(_   _)| | | ||  ___)  | | / _  ||  _ \(_   _)
+			| |      | | \ V / | ____|| |_____ | |( (_| || | | | | |_ | |_| || |_____ | |( (_| || | | | | |_ 
+			|_|      |_|  \_/  |_____)|_______)|_| \___ ||_| |_|  \__) \__  ||_______)|_| \___ ||_| |_|  \__)
+			                                      (_____|             (____/             (_____|             
+	 -->
+</html>
