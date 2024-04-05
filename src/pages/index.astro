@@ -27,44 +27,28 @@ import "@fontsource/geist-sans";
 		<meta charset="UTF-8" />
 		<meta name="description" content="Robert Abreu Bio" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="bio/favicon.svg" />
 		<title>Robert Abreu - Software Engineer</title>
 		<style>
-			body {
-				font-family: "Geist Sans", sans-serif;
-			}
-
-			.loader {
-				animation: spin 2s linear infinite;
-			}
-
 			.icon-container {
 				display: inline-block;
 				transition: transform 0.5s ease;
 			}
 
-			@keyframes spin {
-				from {
-					transform: rotate(0deg);
-				}
-				to {
-					transform: rotate(360deg);
-				}
-			}
 		</style>
 	</head>
 	<body
 		class="h-screen text-white bg-black dark:bg-black dark:text-white flex flex-col justify-between"
 	>
-		<header class="container mx-auto p-4 text-center">
+		<header class="container mx-auto p-4 text-left">
 			<h1 class="text-4xl font-bold">Robert Abreu</h1>
-			<p class="text-xl">Software Engineer</p>
+			<p class="text-x5 pl-20">Software Engineer</p>
 		</header>
-		<main class="container mx-auto p-4 text-center">
-			<section class="icon-parent m-auto min-h-1.5 min-w-1.5 mb-10">
+		<main class="container mx-auto p-4 text-left">
+			<section class="icon-parent m-auto min-h-1.5 min-w-1.5 mb-10 text-center">
 				<div class="cursor-pointer icon-container">
 					<svg
-						class="loader"
+						class="animate-loader-spin"
 						id="fi_2767294"
 						enable-background="new 0 0 128 128"
 						height="20"
@@ -80,11 +64,11 @@ import "@fontsource/geist-sans";
 				</div>
 			</section>
 			<section class="transition-colors text-white">
-				<h2 class="text-2xl font-bold">About Me</h2>
-				<p class="about-me w-auto m-auto md:w-2/4"/>
+				<h2 class="text-2xl font-bold transition-all transition-opacity">About Me</h2>
+				<p class=" min-h-6"><span class="about-me"/><span class="cursor font-black min-w-10"/></p>
 			</section>
 		</main>
-		<footer class="container mx-auto p-4 text-center">
+		<footer class="container mx-auto p-4 text-left">
 			<section class="mt-6">
 				<div class="flex justify-center gap-4 mt-4">
 					<a
@@ -119,12 +103,7 @@ import "@fontsource/geist-sans";
 						class="text-gray-900 dark:text-white hover:underline"
 					>
 						<section>
-							<!--?xml version="1.0" encoding="iso-8859-1"?-->
-							<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
 							<svg
-								
-								
 								version="1.1"
 								id="Capa_1"
 								xmlns="http://www.w3.org/2000/svg"
@@ -213,7 +192,7 @@ import "@fontsource/geist-sans";
 					</a>
 				</div>
 			</section>
-			<p>© 2024</p>
+			<p class="text-center">© 2024</p>
 		</footer>
 		<script is:inline>
 			const aboutMe =
@@ -222,18 +201,23 @@ import "@fontsource/geist-sans";
 				" solutions that enhance user experiences and solve complex" +
 				" problems. ";
 
-			const cursor = "  █";
+			const cursor = "|"//"█";
+			const space = document.createTextNode("\u00A0");
 			function writeOut() {
 				const aboutMeContainer = document.querySelector(".about-me");
-				let i = 0;
+				const cursorContainer = document.querySelector(".cursor");
+				let i = -50;
 				const typingInterval = setInterval(() => {
 					aboutMeContainer.innerText =
-						aboutMe.substring(0, i++) + (i % 5 === 0 ? cursor : "   ");
+						aboutMe.substring(0, i++);
+					cursorContainer.innerText = (i % 5 === 0 ? cursor : "");
 					if (i > aboutMe.length) {
-						clearInterval(typingInterval);
 						aboutMeContainer.innerText = aboutMe;
+						cursorContainer.innerText = "";
+						clearInterval(typingInterval);
 					}
-				}, 25);
+					
+				}, 50);
 			}
 
 			document.addEventListener("DOMContentLoaded", function () {
@@ -251,7 +235,7 @@ import "@fontsource/geist-sans";
 						iconContainer.style.transform = `translate(${vx}px, ${vy}px)`;
 					});
 				}
-				setTimeout(writeOut, 2000);
+				setTimeout(writeOut, 250);
 			});
 		</script>
 	</body>
