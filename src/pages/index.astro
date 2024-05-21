@@ -2,6 +2,7 @@
 import "@fontsource/geist-sans";
 import Nav from "../components/Nav.astro";
 import WorkExp from "../components/WorkExp.astro";
+import Footer from "../components/Footer.astro";
 
 const year = new Date().getFullYear();
 import { gsap } from "gsap";
@@ -47,7 +48,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 			}
 		</style>
 	</head>
-	<body>
+	<body class="bg-gray-950">
 		<Nav />
 		<main
 			class="flex flex-col min-h-[100dvh] bg-gray-950 text-gray-50 -mt-5"
@@ -193,22 +194,12 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 							>
 								Connect
 							</h2>
-							<div class="space-y-4">
-								Incoming...
-							</div>
+							<div class="space-y-4">Incoming...</div>
 						</div>
 					</section>
 				</div>
 			</div>
-			<footer
-				class="px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 border-t border-gray-800"
-			>
-				<div
-					class="mx-auto max-w-3xl text-center text-sm text-gray-400 md:text-base lg:text-lg"
-				>
-					© {year} Robert Abreu. All rights reserved.
-				</div>
-			</footer>
+			<Footer is:inline />
 		</main>
 		<script is:inline>
 			document.addEventListener("DOMContentLoaded", function () {
