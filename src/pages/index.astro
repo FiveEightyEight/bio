@@ -1,5 +1,8 @@
 ---
 import "@fontsource/geist-sans";
+import WorkExp from "../components/WorkExp.astro";
+
+const year = new Date().getFullYear();
 ---
 
 <html lang="en">
@@ -21,8 +24,19 @@ import "@fontsource/geist-sans";
 		<meta charset="UTF-8" />
 		<meta name="description" content="Robert Abreu Bio" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="bio/favicon.svg" />
-		<title>Robert Abreu - Software Engineer</title>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="R_NBG_WHITE.svg"
+			media="(prefers-color-scheme: dark)"
+		/>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="R_NBG_BLACK.svg"
+			media="(prefers-color-scheme: light)"
+		/>
+		<title>Abreu - Software Engineer</title>
 		<style>
 			.icon-container {
 				display: inline-block;
@@ -33,7 +47,7 @@ import "@fontsource/geist-sans";
 	<body>
 		<main class="flex flex-col min-h-[100dvh] bg-gray-950 text-gray-50">
 			<header
-				class="px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20"
+				class="px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 h-screen"
 			>
 				<div class="mx-auto max-w-3xl">
 					<div class="space-y-2 text-center">
@@ -53,75 +67,13 @@ import "@fontsource/geist-sans";
 					class="mx-auto max-w-3xl space-y-12 py-12 md:space-y-16 md:py-16 lg:space-y-20 lg:py-20 xl:space-y-24 xl:py-24"
 				>
 					<section class="grid gap-6 md:gap-8 lg:gap-10 xl:gap-12">
-						<div class="space-y-2">
+						<div class="h-screen space-y-2">
 							<h2
 								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
 							>
 								Work Experience
 							</h2>
-							<div class="space-y-4">
-								<div class="grid gap-2 md:gap-3 lg:gap-4">
-									<div
-										class="flex items-center justify-between"
-									>
-										<h3
-											class="text-lg font-semibold md:text-xl lg:text-2xl"
-										>
-											Software Engineer
-										</h3>
-										<p
-											class="text-sm text-gray-400 md:text-base lg:text-lg"
-										>
-											2019 - Present
-										</p>
-									</div>
-									<p
-										class="text-sm text-gray-400 md:text-base lg:text-lg"
-									>
-										Acme Inc.
-									</p>
-								</div>
-								<p
-									class="text-sm text-gray-400 md:text-base lg:text-lg"
-								>
-									Developed and maintained complex web
-									applications using React, Node.js, and
-									various other technologies. Collaborated
-									with cross-functional teams to deliver
-									high-quality software solutions.
-								</p>
-							</div>
-						</div>
-						<div class="space-y-2">
-							<h2
-								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
-							>
-								Education
-							</h2>
-							<div class="space-y-4">
-								<div class="grid gap-2 md:gap-3 lg:gap-4">
-									<div
-										class="flex items-center justify-between"
-									>
-										<h3
-											class="text-lg font-semibold md:text-xl lg:text-2xl"
-										>
-											Bachelor of Science in Computer
-											Science
-										</h3>
-										<p
-											class="text-sm text-gray-400 md:text-base lg:text-lg"
-										>
-											2015 - 2019
-										</p>
-									</div>
-									<p
-										class="text-sm text-gray-400 md:text-base lg:text-lg"
-									>
-										University of Example
-									</p>
-								</div>
-							</div>
+							<WorkExp />
 						</div>
 						<div class="space-y-2">
 							<h2
@@ -174,6 +126,37 @@ import "@fontsource/geist-sans";
 								</div>
 							</div>
 						</div>
+						<div class="space-y-2">
+							<h2
+								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
+							>
+								Education
+							</h2>
+							<div class="space-y-4">
+								<div class="grid gap-2 md:gap-3 lg:gap-4">
+									<div
+										class="flex items-center justify-between"
+									>
+										<h3
+											class="text-lg font-semibold md:text-xl lg:text-2xl"
+										>
+											Bachelor of Science in Computer
+											Science
+										</h3>
+										<p
+											class="text-sm text-gray-400 md:text-base lg:text-lg"
+										>
+											2015 - 2019
+										</p>
+									</div>
+									<p
+										class="text-sm text-gray-400 md:text-base lg:text-lg"
+									>
+										University of Example
+									</p>
+								</div>
+							</div>
+						</div>
 					</section>
 				</div>
 			</div>
@@ -183,7 +166,7 @@ import "@fontsource/geist-sans";
 				<div
 					class="mx-auto max-w-3xl text-center text-sm text-gray-400 md:text-base lg:text-lg"
 				>
-					© 2024 John Doe. All rights reserved.
+					© {year} Robert Abreu. All rights reserved.
 				</div>
 			</footer>
 		</main>
