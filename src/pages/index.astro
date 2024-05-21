@@ -1,8 +1,11 @@
 ---
 import "@fontsource/geist-sans";
+import Nav from "../components/Nav.astro";
 import WorkExp from "../components/WorkExp.astro";
 
 const year = new Date().getFullYear();
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 ---
 
 <html lang="en">
@@ -45,11 +48,16 @@ const year = new Date().getFullYear();
 		</style>
 	</head>
 	<body>
-		<main class="flex flex-col min-h-[100dvh] bg-gray-950 text-gray-50">
+		<Nav />
+		<main
+			class="flex flex-col min-h-[100dvh] bg-gray-950 text-gray-50 -mt-5"
+		>
 			<header
 				class="px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 h-screen"
 			>
-				<div class="flex flex-col h-full my-auto mx-auto max-w-3xl space-y-2 justify-center items-center">
+				<div
+					class="flex flex-col h-full my-auto mx-auto max-w-3xl space-y-2 justify-center items-center"
+				>
 					<h1
 						class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
 					>
@@ -65,7 +73,10 @@ const year = new Date().getFullYear();
 					class="mx-auto max-w-3xl space-y-12 py-12 md:space-y-16 md:py-16 lg:space-y-20 lg:py-20 xl:space-y-24 xl:py-24"
 				>
 					<section class="grid gap-6 md:gap-8 lg:gap-10 xl:gap-12">
-						<div class="h-screen space-y-2">
+						<div
+							id="work-experience"
+							class="flex flex-col justify-center h-screen space-y-2"
+						>
 							<h2
 								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
 							>
@@ -73,7 +84,10 @@ const year = new Date().getFullYear();
 							</h2>
 							<WorkExp />
 						</div>
-						<div class="space-y-2">
+						<div
+							id="skills"
+							class="flex flex-col justify-center h-screen space-y-2"
+						>
 							<h2
 								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
 							>
@@ -100,6 +114,26 @@ const year = new Date().getFullYear();
 								<div
 									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
+									TypeScript
+								</div>
+								<div
+									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg whitespace-nowrap"
+								>
+									React Native
+								</div>
+								<div
+									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+								>
+									GraphQL
+								</div>
+								<div
+									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+								>
+									Python
+								</div>
+								<div
+									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+								>
 									CSS
 								</div>
 								<div
@@ -108,7 +142,7 @@ const year = new Date().getFullYear();
 									Git
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg whitespace-nowrap"
 								>
 									SQL
 								</div>
@@ -117,14 +151,9 @@ const year = new Date().getFullYear();
 								>
 									AWS
 								</div>
-								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									Docker
-								</div>
 							</div>
 						</div>
-						<div class="space-y-2">
+						<!-- <div class="space-y-2">
 							<h2
 								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
 							>
@@ -138,22 +167,32 @@ const year = new Date().getFullYear();
 										<h3
 											class="text-lg font-semibold md:text-xl lg:text-2xl"
 										>
-											Bachelor of Science in Computer
-											Science
+											Bachelor's in Computer Information
+											Systems
 										</h3>
 										<p
 											class="text-sm text-gray-400 md:text-base lg:text-lg"
 										>
-											2015 - 2019
+											2006 - 2010
 										</p>
 									</div>
 									<p
 										class="text-sm text-gray-400 md:text-base lg:text-lg"
 									>
-										University of Example
+										DeVry University
 									</p>
 								</div>
 							</div>
+						</div> -->
+						<div
+							id="#connect"
+							class="flex flex-col justify-center h-screen space-y-2"
+						>
+							<h2
+								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
+							>
+								Connect
+							</h2>
 						</div>
 					</section>
 				</div>
@@ -169,44 +208,18 @@ const year = new Date().getFullYear();
 			</footer>
 		</main>
 		<script is:inline>
-			const aboutMe =
-				"I'm a passionate software engineer with a knack for creating efficient and scalable web applications. With a deep" +
-				" understanding of modern web technologies, I strive to build" +
-				" solutions that enhance user experiences and solve complex" +
-				" problems. ";
+			gsap.registerPlugin(ScrollToPlugin);
+			document.querySelectorAll(".nav-link").forEach((link) => {
+				link.addEventListener("click", function (e) {
+					e.preventDefault();
+					const targetId = this.getAttribute("href");
 
-			const cursor = "|";
-			function writeOut() {
-				const aboutMeContainer = document.querySelector(".about-me");
-				const cursorContainer = document.querySelector(".cursor");
-				let i = -50;
-				const typingInterval = setInterval(() => {
-					aboutMeContainer.innerText = aboutMe.substring(0, i++);
-					cursorContainer.innerText = i % 5 === 0 ? cursor : "";
-					if (i > aboutMe.length) {
-						aboutMeContainer.innerText = aboutMe;
-						cursorContainer.innerText = "";
-						clearInterval(typingInterval);
-					}
-				}, 50);
-			}
-
-			document.addEventListener("DOMContentLoaded", function () {
-				const iconContainer = document.querySelector(".icon-container");
-				const hoverTarget = document.querySelector(".icon-parent");
-				if (iconContainer && hoverTarget) {
-					iconContainer.addEventListener("mouseenter", () => {
-						const maxVx =
-							window.innerWidth - iconContainer.offsetWidth;
-						const maxVy =
-							window.innerHeight - iconContainer.offsetHeight;
-
-						const vx = (Math.random() * maxVx) / 2;
-						const vy = (Math.random() * maxVy) / 2;
-						iconContainer.style.transform = `translate(${vx}px, ${vy}px)`;
+					gsap.to(window, {
+						duration: 5,
+						scrollTo: { y: targetId, autoKill: true },
+						ease: "elastic.in",
 					});
-				}
-				setTimeout(writeOut, 250);
+				});
 			});
 		</script>
 	</body>
