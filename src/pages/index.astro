@@ -46,23 +46,6 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 				transition: transform 0.5s ease;
 			}
 		</style>
-		<script is:inline>
-			document.addEventListener("DOMContentLoaded", function () {
-				gsap.registerPlugin(ScrollToPlugin);
-				document.querySelectorAll(".nav-link").forEach((link) => {
-					link.addEventListener("click", function (e) {
-						e.preventDefault();
-						const targetId = this.getAttribute("href");
-
-						gsap.to(window, {
-							duration: 5,
-							scrollTo: { y: targetId, autoKill: true },
-							ease: "elastic.in",
-						});
-					});
-				});
-			});
-		</script>
 	</head>
 	<body class="bg-gray-950">
 		<Nav />
@@ -283,7 +266,44 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 			</div>
 			<Footer is:inline />
 		</main>
-		
+		<script is:inline>
+			document.addEventListener("DOMContentLoaded", function () {
+				gsap.registerPlugin(ScrollToPlugin);
+				function getSamePageAnchor(link) {
+					if (
+						link.protocol !== window.location.protocol ||
+						link.host !== window.location.host ||
+						link.pathname !== window.location.pathname ||
+						link.search !== window.location.search
+					) {
+						return false;
+					}
+
+					return link.hash;
+				}
+
+				// Scroll to a given hash, preventing the event given if there is one
+				function scrollToHash(hash, e) {
+					const elem = hash ? document.querySelector(hash) : false;
+					if (elem) {
+						if (e) e.preventDefault();
+						gsap.to(window, { scrollTo: elem });
+					}
+				}
+				document.querySelectorAll("a[href]").forEach((link) => {
+					link.addEventListener("click", function (e) {
+						scrollToHash(getSamePageAnchor(a), e);
+						// e.preventDefault();
+						// const targetId = this.getAttribute("href");
+						// gsap.to(window, {
+						// 	duration: 5,
+						// 	scrollTo: { y: targetId, autoKill: true },
+						// 	ease: "power2.out",
+						// });
+					});
+				});
+			});
+		</script>
 	</body>
 	<!-- 
 			 _______  _                _______  _         _                   _______  _         _           
