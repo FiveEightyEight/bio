@@ -3,9 +3,6 @@ import "@fontsource/geist-sans";
 import Nav from "../components/Nav.astro";
 import WorkExp from "../components/WorkExp.astro";
 import Footer from "../components/Footer.astro";
-
-import { gsap } from "gsap";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 ---
 
 <html lang="en">
@@ -266,7 +263,11 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 			</div>
 			<Footer is:inline />
 		</main>
-		<script is:inline>
+		<script
+			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"
+			is:inline></script>
+		<script type="module" is:inline>
+			import gsap from "https://cdn.skypack.dev/gsap";
 			document.addEventListener("DOMContentLoaded", function () {
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
@@ -292,14 +293,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 				}
 				document.querySelectorAll("a[href]").forEach((link) => {
 					link.addEventListener("click", function (e) {
-						scrollToHash(getSamePageAnchor(a), e);
-						// e.preventDefault();
-						// const targetId = this.getAttribute("href");
-						// gsap.to(window, {
-						// 	duration: 5,
-						// 	scrollTo: { y: targetId, autoKill: true },
-						// 	ease: "power2.out",
-						// });
+						scrollToHash(getSamePageAnchor(link), e);
 					});
 				});
 			});
