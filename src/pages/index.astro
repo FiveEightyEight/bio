@@ -49,11 +49,13 @@ import Footer from "../components/Footer.astro";
 				transform: translateY(115px);
 				transition: transform 0.5s;
 			}
-			.visible {
-				visibility: visible;
+			.view {
+				/* visibility: visible; */
+				opacity: 1;
 			}
-			.hidden {
-				visibility: hidden;
+			.hide {
+				/* visibility: hidden; */
+				opacity: 0;
 			}
 		</style>
 	</head>
@@ -353,29 +355,28 @@ import Footer from "../components/Footer.astro";
 						const header = document.querySelector("header");
 						const mainNav = document.getElementById("main-nav");
 						const headerRect = header.getBoundingClientRect();
-						if (
-							headerRect.bottom < 100 &&
-							mainNav.classList.contains("hidden")
-						) {
-							mainNav.classList.replace("hidden", "visible");
-							gsap.from(mainNav, {
-								duration: 1,
-								opacity: 0,
-							});
+						const opacity = window
+							.getComputedStyle(mainNav)
+							.getPropertyValue("opacity");
+						if (headerRect.bottom < 100 && opacity !== "1") {
+							gsap.timeline()
+								.to(mainNav, {
+									duration: 1,
+									opacity: 1,
+								})
+								.set(mainNav, { opacity: 1 });
+						} else if (headerRect.bottom > 100 && opacity !== "0") {
+							gsap.timeline()
+								.to(mainNav, {
+									duration: 1,
+									opacity: 0,
+								})
+								.set(mainNav, { opacity: 0 });
 						} else if (
-							headerRect.bottom > 100 &&
-							mainNav.classList.contains("visible")
+							!mainNav.classList.contains("view") &&
+							!mainNav.classList.contains("hide")
 						) {
-							gsap.to(mainNav, {
-								duration: 1,
-								opacity: 0,
-								onComplete: () => {
-									mainNav.classList.replace(
-										"visible",
-										"hidden",
-									);
-								},
-							});
+							mainNav.classList.add("view");
 						}
 					}, 100);
 				});
