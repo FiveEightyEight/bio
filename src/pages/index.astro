@@ -82,9 +82,7 @@ import Footer from "../components/Footer.astro";
 							u
 						</div>
 					</h1>
-					<p
-						class="text-lg text-gray-400 md:text-xl lg:text-2xl"
-					>
+					<p class="text-lg text-gray-400 md:text-xl lg:text-2xl">
 						Welcome
 					</p>
 				</div>
@@ -295,35 +293,24 @@ import Footer from "../components/Footer.astro";
 		<script type="module" is:inline>
 			import gsap from "https://cdn.skypack.dev/gsap";
 			document.addEventListener("DOMContentLoaded", function () {
-				gsap.registerEffect({
-					name: "fade",
-					effect: (targets, config) => {
-						return gsap.from(targets, {
-							duration: config.duration,
-							opacity: 0,
-						});
-					},
-					defaults: { duration: 2 }, //defaults get applied to any "config" object passed to the effect
-					extendTimeline: true, //now you can call the effect directly on any GSAP timeline to have the result immediately inserted in the position you define (default is sequenced at the end)
-				});
-
 				const nameElement = document.querySelector("p");
-				gsap.effects.fade(nameElement);
-
 				gsap.registerPlugin(TextPlugin);
-				gsap.to(".rabreu", {
+				const gsapTL = gsap.timeline();
+				gsapTL.from(nameElement, {
+					duration: 2,
+					opacity: 0,
+				});
+				gsapTL.to(".rabreu", {
 					y: 0,
-					stagger: 0.05,
+					stagger: 0.09,
 					delay: 0.2,
 					duration: 0.1,
-					ease: "power2.out",
+					ease: "power3.out",
 				});
-
-				
-				gsap.to(nameElement, {
-					duration: 2,
+				gsapTL.to(nameElement, {
+					duration: 1.5,
 					text: "Software Engineer",
-					ease: "power2.out",
+					ease: "steps(17)",
 				});
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
