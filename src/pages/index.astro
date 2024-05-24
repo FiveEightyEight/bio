@@ -312,6 +312,12 @@ import Footer from "../components/Footer.astro";
 					text: "Software Engineer",
 					ease: "steps(17)",
 				});
+				gsapTL.from(".nav-right", {
+					stagger: 0.15,
+					duration: 1.8,
+					delay: 0.2,
+					opacity: 0,
+				});
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
