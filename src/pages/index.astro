@@ -370,11 +370,6 @@ import Footer from "../components/Footer.astro";
 									opacity: 0,
 								})
 								.set(mainNav, { opacity: 0 });
-						} else if (
-							!mainNav.classList.contains("view") &&
-							!mainNav.classList.contains("hide")
-						) {
-							mainNav.classList.add("view");
 						}
 					}, 100);
 				});
@@ -387,25 +382,7 @@ import Footer from "../components/Footer.astro";
 					mobileMenuTimeoutId = setTimeout(() => {
 						if (mobileMenu.classList.contains("hidden")) {
 							mobileMenu.classList.remove("hidden")
-							// gsap.from(mobileMenu, {
-							// 	y: 0,
-							// 	stagger: 0.09,
-							// 	delay: 0.2,
-							// 	duration: 0.1,
-							// 	onComplete: () => {
-									
-							// 	}
-							// });
 						} else {
-							// gsap.to(mobileMenu, {
-							// 	y: -120,
-							// 	stagger: 0.09,
-							// 	delay: 0.2,
-							// 	duration: 0.1,
-							// 	onComplete: () => {
-							// 		mobileMenu.classList.add("hidden")
-							// 	}
-							// });
 							mobileMenu.classList.add("hidden")
 						}
 					}, 150);
