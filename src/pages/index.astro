@@ -370,14 +370,25 @@ import Footer from "../components/Footer.astro";
 									opacity: 0,
 								})
 								.set(mainNav, { opacity: 0 });
-						} else if (
-							!mainNav.classList.contains("view") &&
-							!mainNav.classList.contains("hide")
-						) {
-							mainNav.classList.add("view");
 						}
 					}, 100);
 				});
+				const mobileButton = document.getElementById("menu-button");
+				const mobileMenu = document.getElementById("mobile-menu");
+				let mobileMenuTimeoutId;
+				const toggleMobileMenu = (event) => {
+					clearTimeout(mobileMenuTimeoutId);
+					// debounce with setTimeout
+					mobileMenuTimeoutId = setTimeout(() => {
+						if (mobileMenu.classList.contains("hidden")) {
+							mobileMenu.classList.remove("hidden")
+						} else {
+							mobileMenu.classList.add("hidden")
+						}
+					}, 150);
+				};
+				mobileButton.addEventListener("touchstart", toggleMobileMenu);
+				mobileButton.addEventListener("mousedown", toggleMobileMenu);
 			});
 		</script>
 	</body>
