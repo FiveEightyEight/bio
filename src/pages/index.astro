@@ -42,6 +42,13 @@ import Footer from "../components/Footer.astro";
 				display: inline-block;
 				transition: transform 0.5s ease;
 			}
+			h1 {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
+			.rabreu {
+				transform: translateY(115px);
+				transition: transform 0.5s;
+			}
 		</style>
 	</head>
 	<body class="bg-gray-950">
@@ -57,12 +64,28 @@ import Footer from "../components/Footer.astro";
 					class="flex flex-col h-full my-auto mx-auto max-w-3xl space-y-2 justify-center items-center"
 				>
 					<h1
-						class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+						class="flex flex-row text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
 					>
-						Robert Abreu
+						<div class="rabreu">R</div><div class="rabreu">
+							o
+						</div><div class="rabreu">b</div><div class="rabreu">
+							e
+						</div><div class="rabreu">r</div><div class="rabreu">
+							t
+						</div><div class="rabreu">&nbsp;</div><div
+							class="rabreu"
+						>
+							A
+						</div><div class="rabreu">b</div><div class="rabreu">
+							r
+						</div><div class="rabreu">e</div><div class="rabreu">
+							u
+						</div>
 					</h1>
-					<p class="text-lg text-gray-400 md:text-xl lg:text-2xl">
-						Software Engineer
+					<p
+						class="text-lg text-gray-400 md:text-xl lg:text-2xl"
+					>
+						Welcome
 					</p>
 				</div>
 			</header>
@@ -264,11 +287,44 @@ import Footer from "../components/Footer.astro";
 			<Footer is:inline />
 		</main>
 		<script
+			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"
+			is:inline></script>
+		<script
 			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"
 			is:inline></script>
 		<script type="module" is:inline>
 			import gsap from "https://cdn.skypack.dev/gsap";
 			document.addEventListener("DOMContentLoaded", function () {
+				gsap.registerEffect({
+					name: "fade",
+					effect: (targets, config) => {
+						return gsap.from(targets, {
+							duration: config.duration,
+							opacity: 0,
+						});
+					},
+					defaults: { duration: 2 }, //defaults get applied to any "config" object passed to the effect
+					extendTimeline: true, //now you can call the effect directly on any GSAP timeline to have the result immediately inserted in the position you define (default is sequenced at the end)
+				});
+
+				const nameElement = document.querySelector("p");
+				gsap.effects.fade(nameElement);
+
+				gsap.registerPlugin(TextPlugin);
+				gsap.to(".rabreu", {
+					y: 0,
+					stagger: 0.05,
+					delay: 0.2,
+					duration: 0.1,
+					ease: "power2.out",
+				});
+
+				
+				gsap.to(nameElement, {
+					duration: 2,
+					text: "Software Engineer",
+					ease: "power2.out",
+				});
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
