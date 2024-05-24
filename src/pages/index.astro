@@ -378,6 +378,40 @@ import Footer from "../components/Footer.astro";
 						}
 					}, 100);
 				});
+				const mobileButton = document.getElementById("menu-button");
+				const mobileMenu = document.getElementById("mobile-menu");
+				let mobileMenuTimeoutId;
+				const toggleMobileMenu = (event) => {
+					clearTimeout(mobileMenuTimeoutId);
+					// debounce with setTimeout
+					mobileMenuTimeoutId = setTimeout(() => {
+						if (mobileMenu.classList.contains("hidden")) {
+							mobileMenu.classList.remove("hidden")
+							// gsap.from(mobileMenu, {
+							// 	y: 0,
+							// 	stagger: 0.09,
+							// 	delay: 0.2,
+							// 	duration: 0.1,
+							// 	onComplete: () => {
+									
+							// 	}
+							// });
+						} else {
+							// gsap.to(mobileMenu, {
+							// 	y: -120,
+							// 	stagger: 0.09,
+							// 	delay: 0.2,
+							// 	duration: 0.1,
+							// 	onComplete: () => {
+							// 		mobileMenu.classList.add("hidden")
+							// 	}
+							// });
+							mobileMenu.classList.add("hidden")
+						}
+					}, 150);
+				};
+				mobileButton.addEventListener("touchstart", toggleMobileMenu);
+				mobileButton.addEventListener("mousedown", toggleMobileMenu);
 			});
 		</script>
 	</body>
