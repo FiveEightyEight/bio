@@ -42,6 +42,13 @@ import Footer from "../components/Footer.astro";
 				display: inline-block;
 				transition: transform 0.5s ease;
 			}
+			h1 {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
+			.rabreu {
+				transform: translateY(115px);
+				transition: transform 0.5s;
+			}
 		</style>
 	</head>
 	<body class="bg-gray-950">
@@ -57,12 +64,26 @@ import Footer from "../components/Footer.astro";
 					class="flex flex-col h-full my-auto mx-auto max-w-3xl space-y-2 justify-center items-center"
 				>
 					<h1
-						class="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+						class="flex flex-row text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
 					>
-						Robert Abreu
+						<div class="rabreu">R</div><div class="rabreu">
+							o
+						</div><div class="rabreu">b</div><div class="rabreu">
+							e
+						</div><div class="rabreu">r</div><div class="rabreu">
+							t
+						</div><div class="rabreu">&nbsp;</div><div
+							class="rabreu"
+						>
+							A
+						</div><div class="rabreu">b</div><div class="rabreu">
+							r
+						</div><div class="rabreu">e</div><div class="rabreu">
+							u
+						</div>
 					</h1>
 					<p class="text-lg text-gray-400 md:text-xl lg:text-2xl">
-						Software Engineer
+						Welcome
 					</p>
 				</div>
 			</header>
@@ -264,11 +285,39 @@ import Footer from "../components/Footer.astro";
 			<Footer is:inline />
 		</main>
 		<script
+			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"
+			is:inline></script>
+		<script
 			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"
 			is:inline></script>
 		<script type="module" is:inline>
 			import gsap from "https://cdn.skypack.dev/gsap";
 			document.addEventListener("DOMContentLoaded", function () {
+				const nameElement = document.querySelector("p");
+				gsap.registerPlugin(TextPlugin);
+				const gsapTL = gsap.timeline();
+				gsapTL.from(nameElement, {
+					duration: 2,
+					opacity: 0,
+				});
+				gsapTL.to(".rabreu", {
+					y: 0,
+					stagger: 0.09,
+					delay: 0.2,
+					duration: 0.1,
+					ease: "power3.out",
+				});
+				gsapTL.to(nameElement, {
+					duration: 1.5,
+					text: "Software Engineer",
+					ease: "steps(17)",
+				});
+				gsapTL.from(".nav-link", {
+					stagger: 0.15,
+					duration: 1.8,
+					delay: 0.2,
+					opacity: 0,
+				});
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
@@ -295,6 +344,39 @@ import Footer from "../components/Footer.astro";
 					link.addEventListener("click", function (e) {
 						scrollToHash(getSamePageAnchor(link), e);
 					});
+				});
+				let timeoutId;
+				document.addEventListener("scroll", () => {
+					clearTimeout(timeoutId);
+					// debounce with setTimeout
+					timeoutId = setTimeout(() => {
+						const header = document.querySelector("header");
+						const mainNav = document.getElementById("main-nav");
+						const headerRect = header.getBoundingClientRect();
+						const opacity = window
+							.getComputedStyle(mainNav)
+							.getPropertyValue("opacity");
+						if (headerRect.bottom < 100 && opacity !== "1") {
+							gsap.timeline()
+								.to(mainNav, {
+									duration: 1,
+									opacity: 1,
+								})
+								.set(mainNav, { opacity: 1 });
+						} else if (headerRect.bottom > 100 && opacity !== "0") {
+							gsap.timeline()
+								.to(mainNav, {
+									duration: 1,
+									opacity: 0,
+								})
+								.set(mainNav, { opacity: 0 });
+						} else if (
+							!mainNav.classList.contains("view") &&
+							!mainNav.classList.contains("hide")
+						) {
+							mainNav.classList.add("view");
+						}
+					}, 100);
 				});
 			});
 		</script>
