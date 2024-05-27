@@ -135,9 +135,18 @@ import Footer from "../components/Footer.astro";
 							class="flex flex-col justify-center h-screen space-y-2"
 						>
 							<h2
-								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
+								class="flex flex-row text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
 							>
-								Skills
+								<div class="skills-header-char">S</div>
+								<div class="skills-header-char">k</div><div
+									class="skills-header-char"
+								>
+									i
+								</div><div class="skills-header-char">
+									l
+								</div><div class="skills-header-char">
+									l
+								</div><div class="skills-header-char">s</div>
 							</h2>
 							<div
 								class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8"
@@ -397,8 +406,24 @@ import Footer from "../components/Footer.astro";
 				workXpTL.from("#work-experience-content", {
 					duration: 1.8,
 					opacity: 0,
-				})
+				});
 
+				const skillsTL = gsap.timeline({
+					scrollTrigger: {
+						trigger: "#skills",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none none",
+					},
+				});
+				skillsTL.from(".skills-header-char", {
+					y: 50,
+					stagger: 0.09,
+					delay: 0.3,
+					duration: 0.5,
+					ease: "power3.out",
+				});
+				// skills-header-char
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
