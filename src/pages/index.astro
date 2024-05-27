@@ -107,21 +107,23 @@ import Footer from "../components/Footer.astro";
 									class="xp-left"
 								>
 									k
-								</div>&nbsp;<div class="xp-left">E</div>xp<div class="xp-right">
-									e
-								</div><div class="xp-right">r</div><div
-									class="xp-right"
+								</div>&nbsp;<div class="xp-left">E</div><div
+									class="xp-center"
 								>
-									i
+									xp
 								</div><div class="xp-right">e</div><div
 									class="xp-right"
 								>
-									n
-								</div><div class="xp-right">c</div><div
+									r
+								</div><div class="xp-right">i</div><div
 									class="xp-right"
 								>
 									e
-								</div>
+								</div><div class="xp-right">n</div><div
+									class="xp-right"
+								>
+									c
+								</div><div class="xp-right">e</div>
 							</h2>
 							<WorkExp />
 						</div>
@@ -310,6 +312,9 @@ import Footer from "../components/Footer.astro";
 			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"
 			is:inline></script>
 		<script
+			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+			is:inline></script>
+		<script
 			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"
 			is:inline></script>
 		<script type="module" is:inline>
@@ -340,21 +345,34 @@ import Footer from "../components/Footer.astro";
 					delay: 0.2,
 					opacity: 0,
 				});
-				gsapTL.from(".xp-right", {
+				gsap.registerPlugin(ScrollTrigger);
+				const workXpTL = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".xp-right",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none none",
+					},
+				});
+				workXpTL.from(".xp-right", {
 					x: window.innerWidth,
 					stagger: 0.09,
-					delay: 0.2,
-					duration: 0.1,
+					delay: 0.3,
+					duration: 0.5,
 					ease: "rough",
 				});
-				gsapTL.from(".xp-left", {
-					x: -window.innerWidth,
-					stagger: 0.09,
-					delay: 0.2,
-					duration: 0.1,
-					ease: "power3.out",
-					reversed: true,
-				}, "<");
+				workXpTL.from(
+					".xp-left",
+					{
+						x: -window.innerWidth,
+						stagger: 0.09,
+						delay: 0.2,
+						duration: 0.5,
+						ease: "power3.out",
+						reversed: true,
+					},
+					"<",
+				);
 
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
@@ -375,7 +393,7 @@ import Footer from "../components/Footer.astro";
 					const elem = hash ? document.querySelector(hash) : false;
 					if (elem) {
 						if (e) e.preventDefault();
-						gsap.to(window, { scrollTo: elem });
+						gsap.to(window, { scrollTo: { y: elem, x: 0 } });
 					}
 				}
 				document.querySelectorAll("a[href]").forEach((link) => {
