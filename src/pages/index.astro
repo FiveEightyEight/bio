@@ -45,6 +45,9 @@ import Footer from "../components/Footer.astro";
 			h1 {
 				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 			}
+			h2 {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
 			.rabreu {
 				transform: translateY(115px);
 				transition: transform 0.5s;
@@ -337,18 +340,26 @@ import Footer from "../components/Footer.astro";
 					y: 0,
 					ease: "power3.out",
 				});
-				gsapTL.to(".rabreu", {
-					y: 0,
-					stagger: 0.09,
-					delay: 0.2,
-					duration: 0.1,
-					ease: "power3.out",
-				});
-				gsapTL.to(nameElement, {
-					duration: 1.5,
-					text: "Software Engineer",
-					ease: "steps(17)",
-				});
+				gsapTL.to(
+					".rabreu",
+					{
+						y: 0,
+						stagger: 0.09,
+						delay: 0.2,
+						duration: 0.1,
+						ease: "power3.out",
+					},
+					"<",
+				);
+				gsapTL.to(
+					nameElement,
+					{
+						duration: 1.5,
+						text: "Software Engineer",
+						ease: "steps(17)",
+					},
+					"<",
+				);
 				gsapTL.from(".nav-link", {
 					stagger: 0.15,
 					duration: 1.8,
@@ -365,24 +376,28 @@ import Footer from "../components/Footer.astro";
 					},
 				});
 				workXpTL.from(".xp-right", {
-					x: window.innerWidth,
+					y: 50,
 					stagger: 0.09,
 					delay: 0.3,
 					duration: 0.5,
 					ease: "rough",
+					reversed: true,
 				});
 				workXpTL.from(
 					".xp-left",
 					{
-						x: -window.innerWidth,
+						y: 50,
 						stagger: 0.09,
 						delay: 0.2,
 						duration: 0.5,
 						ease: "power3.out",
-						reversed: true,
 					},
 					"<",
 				);
+				workXpTL.from("#work-experience-content", {
+					duration: 1.8,
+					opacity: 0,
+				})
 
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
