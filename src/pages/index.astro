@@ -323,9 +323,19 @@ import Footer from "../components/Footer.astro";
 				const nameElement = document.querySelector("p");
 				gsap.registerPlugin(TextPlugin);
 				const gsapTL = gsap.timeline();
+				gsapTL.set(nameElement, { y: -100, scale: 2 });
 				gsapTL.from(nameElement, {
-					duration: 2,
+					duration: 1.8,
 					opacity: 0,
+					delay: 0.4,
+					ease: "power3.out",
+				});
+				gsapTL.to(nameElement, {
+					duration: 1.8,
+					delay: 0.5,
+					scale: 1,
+					y: 0,
+					ease: "power3.out",
 				});
 				gsapTL.to(".rabreu", {
 					y: 0,
