@@ -152,57 +152,57 @@ import Footer from "../components/Footer.astro";
 								class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8"
 							>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									React
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									Node.js
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									JavaScript
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									TypeScript
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg whitespace-nowrap"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg whitespace-nowrap"
 								>
 									React Native
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									GraphQL
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									Python
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									CSS
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									Git
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg whitespace-nowrap"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg whitespace-nowrap"
 								>
 									SQL
 								</div>
 								<div
-									class="rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
+									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
 								>
 									AWS
 								</div>
@@ -423,7 +423,18 @@ import Footer from "../components/Footer.astro";
 					duration: 0.5,
 					ease: "power3.out",
 				});
-				// skills-header-char
+				gsap.utils.toArray(".skill").forEach((skill) => {
+					const randomDuration = gsap.utils.random(0.5, 5, 1.5);
+					skillsTL.add(
+						gsap.from(skill, {
+							duration: randomDuration,
+							delay: 0.02,
+							opacity: 0,
+							ease: "power3.out",
+						}),
+						"<",
+					);
+				});
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
