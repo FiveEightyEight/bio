@@ -323,7 +323,7 @@ import Footer from "../components/Footer.astro";
 				const nameElement = document.querySelector("p");
 				gsap.registerPlugin(TextPlugin);
 				const gsapTL = gsap.timeline();
-				gsapTL.set(nameElement, { y: -100, scale: 2 });
+				gsapTL.set(nameElement, { y: -100, scale: 2.5 });
 				gsapTL.from(nameElement, {
 					duration: 1.8,
 					opacity: 0,
