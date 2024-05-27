@@ -97,9 +97,33 @@ import Footer from "../components/Footer.astro";
 							class="flex flex-col justify-center h-screen space-y-2"
 						>
 							<h2
-								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
+								class="flex flex-row text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
 							>
-								Work Experience
+								<div class="xp-left">W</div><div
+									class="xp-left"
+								>
+									o
+								</div><div class="xp-left">r</div><div
+									class="xp-left"
+								>
+									k
+								</div>&nbsp;<div class="xp-left">E</div><div
+									class="xp-center"
+								>
+									xp
+								</div><div class="xp-right">e</div><div
+									class="xp-right"
+								>
+									r
+								</div><div class="xp-right">i</div><div
+									class="xp-right"
+								>
+									e
+								</div><div class="xp-right">n</div><div
+									class="xp-right"
+								>
+									c
+								</div><div class="xp-right">e</div>
 							</h2>
 							<WorkExp />
 						</div>
@@ -288,6 +312,9 @@ import Footer from "../components/Footer.astro";
 			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"
 			is:inline></script>
 		<script
+			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+			is:inline></script>
+		<script
 			src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"
 			is:inline></script>
 		<script type="module" is:inline>
@@ -296,9 +323,19 @@ import Footer from "../components/Footer.astro";
 				const nameElement = document.querySelector("p");
 				gsap.registerPlugin(TextPlugin);
 				const gsapTL = gsap.timeline();
+				gsapTL.set(nameElement, { y: -100, scale: 2.5 });
 				gsapTL.from(nameElement, {
-					duration: 2,
+					duration: 1.8,
 					opacity: 0,
+					delay: 0.4,
+					ease: "power3.out",
+				});
+				gsapTL.to(nameElement, {
+					duration: 1.8,
+					delay: 0.5,
+					scale: 1,
+					y: 0,
+					ease: "power3.out",
 				});
 				gsapTL.to(".rabreu", {
 					y: 0,
@@ -318,6 +355,35 @@ import Footer from "../components/Footer.astro";
 					delay: 0.2,
 					opacity: 0,
 				});
+				gsap.registerPlugin(ScrollTrigger);
+				const workXpTL = gsap.timeline({
+					scrollTrigger: {
+						trigger: ".xp-right",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none none",
+					},
+				});
+				workXpTL.from(".xp-right", {
+					x: window.innerWidth,
+					stagger: 0.09,
+					delay: 0.3,
+					duration: 0.5,
+					ease: "rough",
+				});
+				workXpTL.from(
+					".xp-left",
+					{
+						x: -window.innerWidth,
+						stagger: 0.09,
+						delay: 0.2,
+						duration: 0.5,
+						ease: "power3.out",
+						reversed: true,
+					},
+					"<",
+				);
+
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
@@ -337,7 +403,7 @@ import Footer from "../components/Footer.astro";
 					const elem = hash ? document.querySelector(hash) : false;
 					if (elem) {
 						if (e) e.preventDefault();
-						gsap.to(window, { scrollTo: elem });
+						gsap.to(window, { scrollTo: { y: elem, x: 0 } });
 					}
 				}
 				document.querySelectorAll("a[href]").forEach((link) => {
@@ -381,9 +447,9 @@ import Footer from "../components/Footer.astro";
 					// debounce with setTimeout
 					mobileMenuTimeoutId = setTimeout(() => {
 						if (mobileMenu.classList.contains("hidden")) {
-							mobileMenu.classList.remove("hidden")
+							mobileMenu.classList.remove("hidden");
 						} else {
-							mobileMenu.classList.add("hidden")
+							mobileMenu.classList.add("hidden");
 						}
 					}, 150);
 				};
