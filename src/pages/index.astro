@@ -85,9 +85,9 @@ import Footer from "../components/Footer.astro";
 							u
 						</div>
 					</h1>
-					<p class="text-lg text-gray-400 md:text-xl lg:text-2xl">
+					<h3 id="subtitle" class="text-lg text-gray-400 md:text-xl lg:text-2xl">
 						Welcome
-					</p>
+					</h3>
 				</div>
 			</header>
 			<div class="flex-1 px-4 md:px-6 lg:px-8 xl:px-10">
@@ -97,7 +97,7 @@ import Footer from "../components/Footer.astro";
 					<section class="grid gap-6 md:gap-8 lg:gap-10 xl:gap-12">
 						<div
 							id="work-experience"
-							class="flex flex-col justify-center h-screen space-y-2"
+							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
 						>
 							<h2
 								class="flex flex-row text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
@@ -132,7 +132,7 @@ import Footer from "../components/Footer.astro";
 						</div>
 						<div
 							id="skills"
-							class="flex flex-col justify-center h-screen space-y-2"
+							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
 						>
 							<h2
 								class="flex flex-row text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
@@ -241,7 +241,7 @@ import Footer from "../components/Footer.astro";
 						</div> -->
 						<div
 							id="connect"
-							class="flex flex-col justify-center h-screen space-y-2"
+							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
 						>
 							<h2
 								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
@@ -332,12 +332,12 @@ import Footer from "../components/Footer.astro";
 		<script type="module" is:inline>
 			import gsap from "https://cdn.skypack.dev/gsap";
 			document.addEventListener("DOMContentLoaded", function () {
-				const nameElement = document.querySelector("p");
+				const nameElement = document.getElementById("subtitle");
 				gsap.registerPlugin(TextPlugin);
 				const gsapTL = gsap.timeline();
 				gsapTL.set(nameElement, { y: -100, scale: 2.5 });
 				gsapTL.from(nameElement, {
-					duration: 1.8,
+					duration: 1.0,
 					opacity: 0,
 					delay: 0.4,
 					ease: "power3.out",
@@ -454,7 +454,8 @@ import Footer from "../components/Footer.astro";
 					const elem = hash ? document.querySelector(hash) : false;
 					if (elem) {
 						if (e) e.preventDefault();
-						gsap.to(window, { scrollTo: { y: elem, x: 0 } });
+						const nav = document.querySelector("nav");
+						gsap.to(window, { scrollTo: {  y: elem, x: 0, offsetY: nav.offsetHeight } });
 					}
 				}
 				document.querySelectorAll("a[href]").forEach((link) => {
