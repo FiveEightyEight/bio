@@ -454,7 +454,8 @@ import Footer from "../components/Footer.astro";
 					const elem = hash ? document.querySelector(hash) : false;
 					if (elem) {
 						if (e) e.preventDefault();
-						gsap.to(window, { scrollTo: { y: elem, x: 0 } });
+						const nav = document.querySelector("nav");
+						gsap.to(window, { scrollTo: {  y: elem, x: 0, offsetY: nav.offsetHeight } });
 					}
 				}
 				document.querySelectorAll("a[href]").forEach((link) => {
