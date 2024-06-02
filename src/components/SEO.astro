@@ -1,0 +1,21 @@
+---
+const {
+    title = "Abreu - Software Engineer",
+    description = "Discover the portfolio of Robert, a seasoned Front End Software Engineer with over 5 years of experience. Specializing in React, TypeScript, and GraphQL, Robert brings innovative solutions to life. Explore his projects, including a cutting-edge AI-powered chat app, and learn about his expertise in digital services, animations, and software development.",
+    url = "https://rabreu.dev",
+    image = "R_NBG_BLACK.svg",
+    type = "website",
+} = Astro.props;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={image} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
