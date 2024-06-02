@@ -256,6 +256,7 @@ import Footer from "../components/Footer.astro";
 									action="https://formspree.io/f/xjvndyrr"
 									method="POST"
 									class="lg:flex-auto"
+									onsubmit="this.submit(); this.reset(); return false;"
 								>
 									<div
 										class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2"
