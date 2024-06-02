@@ -85,7 +85,10 @@ import Footer from "../components/Footer.astro";
 							u
 						</div>
 					</h1>
-					<p id="subtitle" class="text-lg text-gray-400 md:text-xl lg:text-2xl">
+					<p
+						id="subtitle"
+						class="text-lg text-gray-400 md:text-xl lg:text-2xl"
+					>
 						Welcome
 					</p>
 				</div>
@@ -257,35 +260,37 @@ import Footer from "../components/Footer.astro";
 									<div
 										class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2"
 									>
-										<div>
+										<div class="col-span-2">
 											<label
-												for="first-name"
+												for="contact-name"
 												class="block text-sm font-semibold leading-6 text-gray-50"
-												>First name</label
+												>Name - (Required)</label
 											>
 											<div class="mt-2.5">
 												<input
 													type="text"
-													name="first-name"
-													id="first-name"
+													name="contact-name"
+													id="contact-name"
 													autocomplete="given-name"
 													class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-950 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+													required
 												/>
 											</div>
 										</div>
-										<div>
+										<div class="col-span-2">
 											<label
-												for="last-name"
+												for="email"
 												class="block text-sm font-semibold leading-6 text-gray-50"
-												>Last name</label
+												>Email - (Required)</label
 											>
 											<div class="mt-2.5">
 												<input
-													type="text"
-													name="last-name"
-													id="last-name"
+													type="email"
+													name="email"
+													id="email"
 													autocomplete="family-name"
 													class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-950 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+													required
 												/>
 											</div>
 										</div>
@@ -293,7 +298,7 @@ import Footer from "../components/Footer.astro";
 											<label
 												for="message"
 												class="block text-sm font-semibold leading-6 text-gray-50"
-												>Message</label
+												>Message - (Required)</label
 											>
 											<div class="mt-2.5">
 												<textarea
@@ -301,7 +306,7 @@ import Footer from "../components/Footer.astro";
 													name="message"
 													rows="4"
 													class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-950 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-												></textarea>
+													required></textarea>
 											</div>
 										</div>
 									</div>
@@ -455,7 +460,13 @@ import Footer from "../components/Footer.astro";
 					if (elem) {
 						if (e) e.preventDefault();
 						const nav = document.querySelector("nav");
-						gsap.to(window, { scrollTo: {  y: elem, x: 0, offsetY: nav.offsetHeight } });
+						gsap.to(window, {
+							scrollTo: {
+								y: elem,
+								x: 0,
+								offsetY: nav.offsetHeight,
+							},
+						});
 					}
 				}
 				document.querySelectorAll("a[href]").forEach((link) => {
