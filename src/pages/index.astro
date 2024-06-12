@@ -1,6 +1,7 @@
 ---
 import "@fontsource/geist-sans";
 import Nav from "../components/Nav.astro";
+import ProjectItem from "../components/ProjectItem.astro";
 import WorkExp from "../components/WorkExp.astro";
 import Footer from "../components/Footer.astro";
 import SEO from "../components/SEO.astro";
@@ -133,6 +134,12 @@ import SEO from "../components/SEO.astro";
 								</div><div class="xp-right">e</div>
 							</h2>
 							<WorkExp />
+						</div>
+						<div
+							id="projects"
+							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
+						>
+							<ProjectItem />
 						</div>
 						<div
 							id="skills"
@@ -522,8 +529,7 @@ import SEO from "../components/SEO.astro";
 				mobileButton.addEventListener("mousedown", toggleMobileMenu);
 			});
 		</script>
-	</body>
-	<!-- 
+	</body><!-- 
 			 _______  _                _______  _         _                   _______  _         _           
 			(_______)(_)              (_______)(_)       | |      _          (_______)(_)       | |      _   
 			 _____    _  _   _  _____  _____    _   ____ | |__  _| |_  _   _  _____    _   ____ | |__  _| |_ 
