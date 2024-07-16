@@ -1,12 +1,52 @@
 ---
+import { Icon } from "astro-icon/components";
 const year = new Date().getFullYear();
 // class="container mx-auto p-4 text-left"
 ---
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document
+            .getElementById("email-copy")
+            .addEventListener("click", function () {
+                const email = "robert.abreu.three@gmail.com";
+                navigator.clipboard.writeText(email).then(
+                    function () {
+                        const notification =
+                            document.getElementById("notification");
+                        notification.classList.remove("hidden");
+                        setTimeout(() => {
+                            notification.classList.add("hidden");
+                        }, 2000);
+                    },
+                    function (err) {
+                        console.error("Failed to copy text: ", err);
+                    },
+                );
+            });
+    });
+</script>
 <footer
     class="px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 border-t border-gray-800"
 >
     <section>
+        <div class="flex justify-center gap-2 align-baseline">
+            <p class="align-bottom text-end">robert.abreu.three@gmail.com</p>
+            <button
+                id="email-copy"
+                type="button"
+                class="rounded text-xs font-semibold text-gray-50 hover:text-cyan-500 shadow-sm"
+            >
+                <Icon class="w-4 h-4" name="clipboard" />
+                <p
+                    id="notification"
+                    class="text-green-500 mt-2 absolute hidden"
+                >
+                    Email copied to clipboard!
+                </p>
+            </button>
+            
+        </div>
         <div class="flex justify-center gap-4 mt-4">
             <a
                 class="flex flex-col items-center"
