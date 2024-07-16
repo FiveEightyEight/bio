@@ -12,7 +12,7 @@ const { href, image, alt, title, description, skills } = Astro.props;
                 class="aspect-[3/2] w-full rounded-2xl bg-gray-100 object-cover"
             />
             <div
-                class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"
+                class="inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"
             >
             </div>
         </div>
@@ -22,7 +22,7 @@ const { href, image, alt, title, description, skills } = Astro.props;
                     class="mt-3 text-lg font-semibold leading-6 text-gray-50 group-hover:text-gray-50"
                 >
                     <a href={href} target="_blank" aria-label={title + " link"}>
-                        <span class="absolute inset-0"></span>
+                        <span class="inset-0"></span>
                         {title}
                     </a>
                 </h3>
