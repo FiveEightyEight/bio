@@ -1,0 +1,16 @@
+---
+import { Icon } from "astro-icon/components";
+const { href, label, name } = Astro.props;
+---
+
+<span class="social-links isolate inline-flex rounded-md shadow-sm">
+    <a
+        aria-label={"Link to " + label}
+        href={href}
+        target="_blank"
+        class="relative inline-flex items-center gap-x-1.5 rounded-md bg-white px-2 py-1 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+    >
+        <Icon class="h-4 w-4 min-w-4 text-gray-950" name={name} />
+        {label}
+    </a>
+</span>
