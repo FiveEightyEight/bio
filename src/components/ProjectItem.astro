@@ -33,7 +33,7 @@ const { href, image, alt, title, description, skills } = Astro.props;
             <div class="grid gap-1 grid-cols-3 md:grid-cols-2 lg:grid-cols-1 lg:place-items-center">
                 {
                     skills &&
-                        skills.map(({ icon, label }) => (
+                        skills.map(({ icon, label }: { icon: string; label: string }) => (
                             <SkillBadge icon={icon} label={label} />
                         ))
                 }
