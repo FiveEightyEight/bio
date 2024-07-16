@@ -448,6 +448,34 @@ import projects from "../data/projects";
 					opacity: 0,
 				});
 
+				const projectsTL = gsap.timeline({
+					scrollTrigger: {
+						trigger: "#projects",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none none",
+					},
+				});
+				projectsTL.from(".projects-header-char", {
+					y: 50,
+					stagger: 0.09,
+					delay: 0.3,
+					duration: 0.5,
+					ease: "power3.out",
+				});
+				gsap.utils.toArray(".project").forEach((project) => {
+					const randomDuration = gsap.utils.random(0.5, 5, 1.5);
+					projectsTL.add(
+						gsap.from(project, {
+							duration: randomDuration,
+							delay: 0.02,
+							opacity: 0,
+							ease: "power3.out",
+						}),
+						"<",
+					);
+				});
+
 				const skillsTL = gsap.timeline({
 					scrollTrigger: {
 						trigger: "#skills",
