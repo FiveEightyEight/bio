@@ -1,0 +1,11 @@
+---
+import { Icon } from "astro-icon/components";
+const { label, icon: name } = Astro.props;
+---
+
+<div
+    class="mt-1 flex items-center lg:gap-x-4 text-xs rounded-full bg-gray-50 max-w-40 border-solid border-gray-50 border-2 lg:min-w-40"
+>
+    <Icon class="h-8 w-8 p-1 min-w-8 text-gray-950" name={name} />
+    <a href="#" class="z-10 px-3 py-1.5 font-medium text-gray-950">{label}</a>
+</div>

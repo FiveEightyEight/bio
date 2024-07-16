@@ -1,0 +1,43 @@
+---
+import SkillBadge from "./SkillBadge.astro";
+const { href, image, alt, title, description, skills } = Astro.props;
+---
+
+<div class="project mx-auto mt-16 p-2 border-2 border-gray-50 rounded-md max-w-sm">
+    <article class="flex flex-col items-start justify-between">
+        <div class="w-full">
+            <img
+                src={image}
+                alt={alt}
+                class="aspect-[3/2] w-full rounded-2xl bg-gray-100 object-cover"
+            />
+            <div
+                class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"
+            >
+            </div>
+        </div>
+        <div class="max-w-xl">
+            <div class="min-h-32">
+                <h3
+                    class="mt-3 text-lg font-semibold leading-6 text-gray-50 group-hover:text-gray-50"
+                >
+                    <a href={href} target="_blank" aria-label={title + " link"}>
+                        <span class="absolute inset-0"></span>
+                        {title}
+                    </a>
+                </h3>
+                <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-50">
+                    {description}
+                </p>
+            </div>
+            <div class="grid gap-1 grid-cols-3 md:grid-cols-2 lg:grid-cols-1 lg:place-items-center">
+                {
+                    skills &&
+                        skills.map(({ icon, label }) => (
+                            <SkillBadge icon={icon} label={label} />
+                        ))
+                }
+            </div>
+        </div>
+    </article>
+</div>
