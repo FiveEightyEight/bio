@@ -1,5 +1,6 @@
 ---
 import "@fontsource/geist-sans";
+import { Icon } from "astro-icon/components";
 import Nav from "../components/Nav.astro";
 import ProjectItem from "../components/ProjectItem.astro";
 import WorkExp from "../components/WorkExp.astro";
@@ -65,7 +66,7 @@ import projects from "../data/projects";
 			class="flex flex-col min-h-[100dvh] bg-gray-950 text-gray-50 -mt-5"
 		>
 			<header
-				class="px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 h-screen"
+				class="-mt-10 px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 h-screen"
 			>
 				<div
 					class="flex flex-col h-full my-auto mx-auto max-w-3xl space-y-2 justify-center items-center"
@@ -108,13 +109,24 @@ import projects from "../data/projects";
 						/>
 					</div>
 				</div>
+				<div class="project-button-link grid grid-rows-2 justify-center justify-items-center -mt-40 md:-mt-20 lg:-mt-10 ">
+					<p class="text-md text-gray-50 mb-4 text-center">View Projects</p>
+					<a
+						class="grid place-items-center content-center w-10 h-10 rounded-full bg-gray-50 animate-bounce"
+						href="#projects"
+					>
+						<Icon
+							class="h-6 w-6 min-w-4 text-indigo-600"
+							name={"arrow-down"}
+						/>
+					</a>
+				</div>
 			</header>
 			<div class="flex-1 px-4 md:px-6 lg:px-8 xl:px-10">
 				<div
 					class="mx-auto max-w-3xl space-y-12 py-12 md:space-y-16 md:py-16 lg:space-y-20 lg:py-20 xl:space-y-24 xl:py-24"
 				>
 					<section class="grid gap-6 md:gap-8 lg:gap-10 xl:gap-12">
-
 						<div
 							id="projects"
 							class="flex flex-col justify-center h-full"
@@ -146,7 +158,7 @@ import projects from "../data/projects";
 								}
 							</div>
 						</div>
-						
+
 						<div
 							id="work-experience"
 							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
@@ -182,7 +194,7 @@ import projects from "../data/projects";
 							</h2>
 							<WorkExp />
 						</div>
-						
+
 						<div
 							id="skills"
 							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
@@ -392,7 +404,7 @@ import projects from "../data/projects";
 				const gsapTL = gsap.timeline();
 				gsapTL.set(nameElement, { y: -100, scale: 2.5 });
 				gsapTL.from(nameElement, {
-					duration: .3,
+					duration: 0.3,
 					opacity: 0,
 					delay: 0.4,
 					ease: "power3.out",
@@ -430,12 +442,26 @@ import projects from "../data/projects";
 					delay: 0.2,
 					opacity: 0,
 				});
-				gsapTL.from(".social-links", {
-					stagger: 0.15,
-					duration: 1.8,
-					delay: 0.2,
-					opacity: 0,
-				}, "<");
+				gsapTL.from(
+					".social-links",
+					{
+						stagger: 0.15,
+						duration: 1.8,
+						delay: 0.2,
+						opacity: 0,
+					},
+					"<",
+				);
+				gsapTL.from(
+					".project-button-link",
+					{
+						duration: 1.8,
+						opacity: 0,
+						delay: .7,
+						ease: "power3.out",
+					},
+					"<",
+				)
 				gsap.registerPlugin(ScrollTrigger);
 				const workXpTL = gsap.timeline({
 					scrollTrigger: {
@@ -481,6 +507,11 @@ import projects from "../data/projects";
 					y: 50,
 					stagger: 0.09,
 					delay: 0.3,
+					duration: 0.5,
+					ease: "power3.out",
+				});
+				projectsTL.to(".project-button-link", {
+					opacity: 0,
 					duration: 0.5,
 					ease: "power3.out",
 				});
