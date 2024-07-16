@@ -8,15 +8,15 @@ const year = new Date().getFullYear();
     document.addEventListener("DOMContentLoaded", function () {
         document
             .getElementById("email-copy")
-            .addEventListener("click", function () {
+            ?.addEventListener("click", function () {
                 const email = "robert.abreu.three@gmail.com";
                 navigator.clipboard.writeText(email).then(
                     function () {
                         const notification =
                             document.getElementById("notification");
-                        notification.classList.remove("hidden");
+                        notification?.classList.remove("hidden");
                         setTimeout(() => {
-                            notification.classList.add("hidden");
+                            notification?.classList.add("hidden");
                         }, 2000);
                     },
                     function (err) {
