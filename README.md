@@ -2,6 +2,10 @@
 > Robert Abreu
 
 
+https://github.com/user-attachments/assets/f073ad70-3af7-4b0d-8318-47a0323e86dd
+<br/>
+<br/>
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
