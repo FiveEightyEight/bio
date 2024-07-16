@@ -101,6 +101,39 @@ import projects from "../data/projects";
 					class="mx-auto max-w-3xl space-y-12 py-12 md:space-y-16 md:py-16 lg:space-y-20 lg:py-20 xl:space-y-24 xl:py-24"
 				>
 					<section class="grid gap-6 md:gap-8 lg:gap-10 xl:gap-12">
+
+						<div
+							id="projects"
+							class="flex flex-col justify-center h-full"
+						>
+							<h2
+								class="flex flex-row text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
+							>
+								<div class="projects-header-char">P</div>
+								<div class="projects-header-char">r</div><div
+									class="projects-header-char"
+								>
+									o
+								</div><div class="projects-header-char">
+									j
+								</div><div class="projects-header-char">
+									e
+								</div><div class="projects-header-char">c</div>
+								<div class="projects-header-char">t</div>
+								<div class="projects-header-char">s</div>
+							</h2>
+							<div
+								class="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+							>
+								{
+									projects &&
+										projects.map((project) => (
+											<ProjectItem {...project} />
+										))
+								}
+							</div>
+						</div>
+						
 						<div
 							id="work-experience"
 							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
@@ -136,37 +169,7 @@ import projects from "../data/projects";
 							</h2>
 							<WorkExp />
 						</div>
-						<div
-							id="projects"
-							class="flex flex-col justify-center h-full"
-						>
-							<h2
-								class="flex flex-row text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
-							>
-								<div class="projects-header-char">P</div>
-								<div class="projects-header-char">r</div><div
-									class="projects-header-char"
-								>
-									o
-								</div><div class="projects-header-char">
-									j
-								</div><div class="projects-header-char">
-									e
-								</div><div class="projects-header-char">c</div>
-								<div class="projects-header-char">t</div>
-								<div class="projects-header-char">s</div>
-							</h2>
-							<div
-								class="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
-							>
-								{
-									projects &&
-										projects.map((project) => (
-											<ProjectItem {...project} />
-										))
-								}
-							</div>
-						</div>
+						
 						<div
 							id="skills"
 							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
