@@ -5,6 +5,7 @@ import ProjectItem from "../components/ProjectItem.astro";
 import WorkExp from "../components/WorkExp.astro";
 import Footer from "../components/Footer.astro";
 import SEO from "../components/SEO.astro";
+import SocialLink from "../components/SocialLink.astro";
 import projects from "../data/projects";
 ---
 
@@ -94,6 +95,18 @@ import projects from "../data/projects";
 					>
 						Welcome
 					</p>
+					<div>
+						<SocialLink
+							href="https://github.com/FiveEightyEight"
+							name="github"
+							label="GitHub"
+						/>
+						<SocialLink
+							href="https://www.linkedin.com/in/robert-abreu/"
+							name="linkedin"
+							label="LinkedIn"
+						/>
+					</div>
 				</div>
 			</header>
 			<div class="flex-1 px-4 md:px-6 lg:px-8 xl:px-10">
@@ -417,6 +430,12 @@ import projects from "../data/projects";
 					delay: 0.2,
 					opacity: 0,
 				});
+				gsapTL.from(".social-links", {
+					stagger: 0.15,
+					duration: 1.8,
+					delay: 0.2,
+					opacity: 0,
+				}, "<");
 				gsap.registerPlugin(ScrollTrigger);
 				const workXpTL = gsap.timeline({
 					scrollTrigger: {
