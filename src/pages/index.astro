@@ -476,7 +476,7 @@ import projects from "../data/projects";
 					stagger: 0.09,
 					delay: 0.3,
 					duration: 0.5,
-					ease: "rough",
+					ease: "power3.out",
 					reversed: true,
 				});
 				workXpTL.from(
@@ -493,7 +493,7 @@ import projects from "../data/projects";
 				workXpTL.from("#work-experience-content", {
 					duration: 1.8,
 					opacity: 0,
-				});
+				}, "<");
 
 				const projectsTL = gsap.timeline({
 					scrollTrigger: {
@@ -505,7 +505,7 @@ import projects from "../data/projects";
 				});
 				projectsTL.from(".projects-header-char", {
 					y: 50,
-					stagger: 0.09,
+					stagger: 0.04,
 					delay: 0.3,
 					duration: 0.5,
 					ease: "power3.out",
@@ -520,7 +520,6 @@ import projects from "../data/projects";
 					projectsTL.add(
 						gsap.from(project, {
 							duration: randomDuration,
-							delay: 0.02,
 							opacity: 0,
 							ease: "power3.out",
 						}),
