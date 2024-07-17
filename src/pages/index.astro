@@ -66,7 +66,7 @@ import projects from "../data/projects";
 			class="flex flex-col min-h-[100dvh] bg-gray-950 text-gray-50 -mt-5"
 		>
 			<header
-				class="-mt-10 px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 h-screen"
+				class="-mt-24 md:-mt-10 px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 h-screen"
 			>
 				<div
 					class="flex flex-col h-full my-auto mx-auto max-w-3xl space-y-2 justify-center items-center"
@@ -109,8 +109,12 @@ import projects from "../data/projects";
 						/>
 					</div>
 				</div>
-				<div class="project-button-link grid grid-rows-2 justify-center justify-items-center -mt-40 md:-mt-20 lg:-mt-10 ">
-					<p class="text-md text-gray-50 mb-4 text-center">View Projects</p>
+				<div
+					class="project-button-link grid grid-rows-2 justify-center justify-items-center -mt-40 md:-mt-20 lg:-mt-10"
+				>
+					<p class="text-md text-gray-50 mb-4 text-center">
+						View Projects
+					</p>
 					<a
 						class="grid place-items-center content-center w-10 h-10 rounded-full bg-gray-50 animate-bounce"
 						href="#projects"
@@ -309,9 +313,15 @@ import projects from "../data/projects";
 							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
 						>
 							<h2
-								class="text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
+								class="flex flex-row text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
 							>
-								Connect
+								<div class="connect-char">C</div>
+								<div class="connect-char">o</div>
+								<div class="connect-char">n</div>
+								<div class="connect-char">n</div>
+								<div class="connect-char">e</div>
+								<div class="connect-char">c</div>
+								<div class="connect-char">t</div>
 							</h2>
 							<div class="space-y-4">
 								<form
@@ -323,7 +333,7 @@ import projects from "../data/projects";
 									<div
 										class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2"
 									>
-										<div class="col-span-2">
+										<div class="connect-field col-span-2">
 											<label
 												for="contact-name"
 												class="block text-sm font-semibold leading-6 text-gray-50"
@@ -339,7 +349,7 @@ import projects from "../data/projects";
 												/>
 											</div>
 										</div>
-										<div class="col-span-2">
+										<div class="connect-field col-span-2">
 											<label
 												for="email"
 												class="block text-sm font-semibold leading-6 text-gray-50"
@@ -356,7 +366,7 @@ import projects from "../data/projects";
 												/>
 											</div>
 										</div>
-										<div class="sm:col-span-2">
+										<div class="connect-field sm:col-span-2">
 											<label
 												for="message"
 												class="block text-sm font-semibold leading-6 text-gray-50"
@@ -372,7 +382,7 @@ import projects from "../data/projects";
 											</div>
 										</div>
 									</div>
-									<div class="mt-10">
+									<div class="connect-field mt-10">
 										<button
 											type="submit"
 											class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -457,11 +467,11 @@ import projects from "../data/projects";
 					{
 						duration: 1.8,
 						opacity: 0,
-						delay: .7,
+						delay: 0.7,
 						ease: "power3.out",
 					},
 					"<",
-				)
+				);
 				gsap.registerPlugin(ScrollTrigger);
 				const workXpTL = gsap.timeline({
 					scrollTrigger: {
@@ -476,7 +486,7 @@ import projects from "../data/projects";
 					stagger: 0.09,
 					delay: 0.3,
 					duration: 0.5,
-					ease: "rough",
+					ease: "power3.out",
 					reversed: true,
 				});
 				workXpTL.from(
@@ -490,10 +500,14 @@ import projects from "../data/projects";
 					},
 					"<",
 				);
-				workXpTL.from("#work-experience-content", {
-					duration: 1.8,
-					opacity: 0,
-				});
+				workXpTL.from(
+					"#work-experience-content",
+					{
+						duration: 1.8,
+						opacity: 0,
+					},
+					"<",
+				);
 
 				const projectsTL = gsap.timeline({
 					scrollTrigger: {
@@ -505,7 +519,7 @@ import projects from "../data/projects";
 				});
 				projectsTL.from(".projects-header-char", {
 					y: 50,
-					stagger: 0.09,
+					stagger: 0.04,
 					delay: 0.3,
 					duration: 0.5,
 					ease: "power3.out",
@@ -520,7 +534,6 @@ import projects from "../data/projects";
 					projectsTL.add(
 						gsap.from(project, {
 							duration: randomDuration,
-							delay: 0.02,
 							opacity: 0,
 							ease: "power3.out",
 						}),
@@ -555,6 +568,29 @@ import projects from "../data/projects";
 						"<",
 					);
 				});
+				const connectTL = gsap.timeline({
+					scrollTrigger: {
+						trigger: "#connect",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none none",
+					},
+				});
+				connectTL.from(".connect-char", {
+					y: 50,
+					stagger: 0.09,
+					delay: 0.3,
+					duration: 0.5,
+					ease: "power3.out",
+				});
+				connectTL.from(".connect-field", {
+					y: 50,
+					opacity: 0,
+					stagger: 0.09,
+					delay: 0.5,
+					duration: 1.5,
+					ease: "power3.out",
+				}, "<");
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
