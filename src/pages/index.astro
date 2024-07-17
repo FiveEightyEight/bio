@@ -333,7 +333,7 @@ import projects from "../data/projects";
 									<div
 										class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2"
 									>
-										<div class="col-span-2">
+										<div class="connect-field col-span-2">
 											<label
 												for="contact-name"
 												class="block text-sm font-semibold leading-6 text-gray-50"
@@ -349,7 +349,7 @@ import projects from "../data/projects";
 												/>
 											</div>
 										</div>
-										<div class="col-span-2">
+										<div class="connect-field col-span-2">
 											<label
 												for="email"
 												class="block text-sm font-semibold leading-6 text-gray-50"
@@ -366,7 +366,7 @@ import projects from "../data/projects";
 												/>
 											</div>
 										</div>
-										<div class="sm:col-span-2">
+										<div class="connect-field sm:col-span-2">
 											<label
 												for="message"
 												class="block text-sm font-semibold leading-6 text-gray-50"
@@ -382,7 +382,7 @@ import projects from "../data/projects";
 											</div>
 										</div>
 									</div>
-									<div class="mt-10">
+									<div class="connect-field mt-10">
 										<button
 											type="submit"
 											class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -583,6 +583,14 @@ import projects from "../data/projects";
 					duration: 0.5,
 					ease: "power3.out",
 				});
+				connectTL.from(".connect-field", {
+					y: 50,
+					opacity: 0,
+					stagger: 0.09,
+					delay: 0.5,
+					duration: 1.5,
+					ease: "power3.out",
+				}, "<");
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
