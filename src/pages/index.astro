@@ -109,8 +109,12 @@ import projects from "../data/projects";
 						/>
 					</div>
 				</div>
-				<div class="project-button-link grid grid-rows-2 justify-center justify-items-center -mt-40 md:-mt-20 lg:-mt-10 ">
-					<p class="text-md text-gray-50 mb-4 text-center">View Projects</p>
+				<div
+					class="project-button-link grid grid-rows-2 justify-center justify-items-center -mt-40 md:-mt-20 lg:-mt-10"
+				>
+					<p class="text-md text-gray-50 mb-4 text-center">
+						View Projects
+					</p>
 					<a
 						class="grid place-items-center content-center w-10 h-10 rounded-full bg-gray-50 animate-bounce"
 						href="#projects"
@@ -463,11 +467,11 @@ import projects from "../data/projects";
 					{
 						duration: 1.8,
 						opacity: 0,
-						delay: .7,
+						delay: 0.7,
 						ease: "power3.out",
 					},
 					"<",
-				)
+				);
 				gsap.registerPlugin(ScrollTrigger);
 				const workXpTL = gsap.timeline({
 					scrollTrigger: {
@@ -496,10 +500,14 @@ import projects from "../data/projects";
 					},
 					"<",
 				);
-				workXpTL.from("#work-experience-content", {
-					duration: 1.8,
-					opacity: 0,
-				}, "<");
+				workXpTL.from(
+					"#work-experience-content",
+					{
+						duration: 1.8,
+						opacity: 0,
+					},
+					"<",
+				);
 
 				const projectsTL = gsap.timeline({
 					scrollTrigger: {
