@@ -568,6 +568,21 @@ import projects from "../data/projects";
 						"<",
 					);
 				});
+				const connectTL = gsap.timeline({
+					scrollTrigger: {
+						trigger: "#connect",
+						start: "top 80%",
+						end: "bottom 20%",
+						toggleActions: "play none none none",
+					},
+				});
+				connectTL.from(".connect-char", {
+					y: 50,
+					stagger: 0.09,
+					delay: 0.3,
+					duration: 0.5,
+					ease: "power3.out",
+				});
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
