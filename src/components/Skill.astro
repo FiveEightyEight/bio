@@ -1,0 +1,12 @@
+---
+import { Icon } from "astro-icon/components";
+const { label, icon: name } = Astro.props;
+---
+
+<li
+    class="skill flex flex-row justify-evenly items-center px-1 content-center rounded-lg bg-[hsla(0,0%,8%,.4)] border border-[hsla(213,43%,25%,.4)] border-tr py-2 md:py-3 md:text-base lg:py-4 lg:text-lg text-nowrap"
+>
+    <Icon name={name} class="w-7 h-7" /><span
+        class="text-center text-sm font-medium">{label}</span
+    >
+</li>
