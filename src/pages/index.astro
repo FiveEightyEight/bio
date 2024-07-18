@@ -6,8 +6,9 @@ import ProjectItem from "../components/ProjectItem.astro";
 import WorkExp from "../components/WorkExp.astro";
 import Footer from "../components/Footer.astro";
 import SEO from "../components/SEO.astro";
+import Skill from "../components/Skill.astro";
 import SocialLink from "../components/SocialLink.astro";
-import projects from "../data/projects";
+import { projects, skills } from "../data";
 ---
 
 <html lang="en">
@@ -240,7 +241,7 @@ import projects from "../data/projects";
 
 						<div
 							id="skills"
-							class="flex flex-col justify-center h-full md:h-screen mb-3 md:mb-0 space-y-2"
+							class="flex flex-col justify-center h-screen md:h-screen mb-3 md:mb-0 space-y-2"
 						>
 							<h2
 								class="flex flex-row text-2xl font-bold tracking-tighter md:text-3xl lg:text-4xl"
@@ -256,65 +257,17 @@ import projects from "../data/projects";
 									l
 								</div><div class="skills-header-char">s</div>
 							</h2>
-							<div
-								class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8"
+							<!-- class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8" -->
+							<ul
+								class="grid grid-cols-4 gap-2 md:gap-4 lg:gap-8"
 							>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									React
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									Node.js
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									JavaScript
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									TypeScript
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg whitespace-nowrap"
-								>
-									React Native
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									GraphQL
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									Python
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									CSS
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									Git
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg whitespace-nowrap"
-								>
-									SQL
-								</div>
-								<div
-									class="skill rounded-lg bg-gray-900 px-4 py-2 text-center text-sm font-medium md:px-6 md:py-3 md:text-base lg:px-8 lg:py-4 lg:text-lg"
-								>
-									AWS
-								</div>
-							</div>
+								{
+									skills &&
+										skills.map(({ label, icon }) => (
+											<Skill label={label} icon={icon} />
+										))
+								}
+							</ul>
 						</div>
 						<!-- <div class="space-y-2">
 							<h2
@@ -583,11 +536,14 @@ import projects from "../data/projects";
 				});
 
 				const skillsTL = gsap.timeline({
+					defaults: { duration: 100, ease: "none" },
 					scrollTrigger: {
 						trigger: "#skills",
 						start: "top 80%",
 						end: "bottom 20%",
-						toggleActions: "play none none none",
+						// toggleActions: "play none none none",
+						// markers: true,
+						// scrub: true,
 					},
 				});
 				skillsTL.from(".skills-header-char", {
@@ -597,7 +553,33 @@ import projects from "../data/projects";
 					duration: 0.5,
 					ease: "power3.out",
 				});
-				gsap.utils.toArray(".skill").forEach((skill) => {
+				const startPositions = {
+					0: { y: 65 },
+					1: { y: 75 },
+					2: { y: 75 },
+					3: { y: 65 },
+					4: { y: 65 },
+					5: { y: 90 },
+					6: { y: 90 },
+					7: { y: 65 },
+					8: { y: 65 },
+					9: { y: 75 },
+					10: { y: 75 },
+				};
+				const endPositions = {
+					0: { y: -10, duration: 100 },
+					1: { y: -60, duration: 100 },
+					2: { y: -60, duration: 100 },
+					3: { y: -10, duration: 100 },
+					4: { y: -10, duration: 100 },
+					5: { y: -70, duration: 100 },
+					6: { y: -70, duration: 100 },
+					7: { y: -10, duration: 100 },
+					8: { y: -10, duration: 100 },
+					9: { y: -80, duration: 100 },
+					10: { y: -80, duration: 100 },
+				};
+				gsap.utils.toArray(".skill").forEach((skill, i) => {
 					const randomDuration = gsap.utils.random(0.5, 5, 1.5);
 					skillsTL.add(
 						gsap.from(skill, {
@@ -608,7 +590,32 @@ import projects from "../data/projects";
 						}),
 						"<",
 					);
+					gsap.set(skill, { ...startPositions[i] }, "<");
 				});
+				const skillTL = gsap.timeline({
+					defaults: { duration: 100, ease: "none" },
+					scrollTrigger: {
+						trigger: "#skills",
+						scrub: true,
+						start: "top 40%",
+						end: "400px",
+					},
+				});
+				gsap.utils.toArray(".skill").forEach((skill, i) => {
+					const randomY = gsap.utils.random(0, 30, 1);
+					// skillTL.add(
+					// 	gsap.to(skill, {
+					// 		y: randomY,
+					// 		ease: "power3.out",
+					// 	}),
+					// );
+					skillTL.to(
+						skill,
+						{ ...endPositions[i], ease: "power1.out" },
+						"<",
+					);
+				});
+				// skillTL.to(".skill", { y: 0, ease:"power3.out" });
 				const connectTL = gsap.timeline({
 					scrollTrigger: {
 						trigger: "#connect",
