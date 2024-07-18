@@ -257,7 +257,6 @@ import { projects, skills } from "../data";
 									l
 								</div><div class="skills-header-char">s</div>
 							</h2>
-							<!-- class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-8" -->
 							<ul
 								class="grid grid-cols-4 gap-2 md:gap-4 lg:gap-8"
 							>
@@ -602,20 +601,12 @@ import { projects, skills } from "../data";
 					},
 				});
 				gsap.utils.toArray(".skill").forEach((skill, i) => {
-					const randomY = gsap.utils.random(0, 30, 1);
-					// skillTL.add(
-					// 	gsap.to(skill, {
-					// 		y: randomY,
-					// 		ease: "power3.out",
-					// 	}),
-					// );
 					skillTL.to(
 						skill,
 						{ ...endPositions[i], ease: "power1.out" },
 						"<",
 					);
 				});
-				// skillTL.to(".skill", { y: 0, ease:"power3.out" });
 				const connectTL = gsap.timeline({
 					scrollTrigger: {
 						trigger: "#connect",
