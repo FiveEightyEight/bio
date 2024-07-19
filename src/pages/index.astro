@@ -258,7 +258,7 @@ import { projects, skills } from "../data";
 								</div><div class="skills-header-char">s</div>
 							</h2>
 							<ul
-								class="grid grid-cols-4 gap-2 md:gap-4 lg:gap-8"
+								class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-8"
 							>
 								{
 									skills &&
@@ -578,6 +578,7 @@ import { projects, skills } from "../data";
 					9: { y: -80, duration: 100 },
 					10: { y: -80, duration: 100 },
 				};
+				const adjustPositions = window.innerWidth >= 770;
 				gsap.utils.toArray(".skill").forEach((skill, i) => {
 					const randomDuration = gsap.utils.random(0.5, 5, 1.5);
 					skillsTL.add(
@@ -589,7 +590,9 @@ import { projects, skills } from "../data";
 						}),
 						"<",
 					);
-					gsap.set(skill, { ...startPositions[i] }, "<");
+					if (adjustPositions) {
+						gsap.set(skill, { ...startPositions[i] }, "<");
+					}
 				});
 				const skillTL = gsap.timeline({
 					defaults: { duration: 100, ease: "none" },
@@ -600,13 +603,15 @@ import { projects, skills } from "../data";
 						end: "400px",
 					},
 				});
-				gsap.utils.toArray(".skill").forEach((skill, i) => {
-					skillTL.to(
-						skill,
-						{ ...endPositions[i], ease: "power1.out" },
-						"<",
-					);
-				});
+				if (adjustPositions) {
+					gsap.utils.toArray(".skill").forEach((skill, i) => {
+						skillTL.to(
+							skill,
+							{ ...endPositions[i], ease: "power1.out" },
+							"<",
+						);
+					});
+				}
 				const connectTL = gsap.timeline({
 					scrollTrigger: {
 						trigger: "#connect",
