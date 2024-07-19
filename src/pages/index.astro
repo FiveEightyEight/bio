@@ -28,7 +28,7 @@ import { projects, skills } from "../data";
 
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Robert Abreu Bio" />
+		<SEO />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link
 			rel="icon"
@@ -42,7 +42,6 @@ import { projects, skills } from "../data";
 			href="R_NBG_BLACK.svg"
 			media="(prefers-color-scheme: light)"
 		/>
-		<SEO />
 		<style>
 			.icon-container {
 				display: inline-block;
@@ -119,6 +118,7 @@ import { projects, skills } from "../data";
 					<a
 						class="grid place-items-center content-center w-10 h-10 rounded-full bg-gray-50 animate-bounce"
 						href="#projects"
+						aria-label="Click to navigate to projects"
 					>
 						<Icon
 							class="h-6 w-6 min-w-4 text-indigo-600"
@@ -163,7 +163,9 @@ import { projects, skills } from "../data";
 								}
 							</div>
 
-							<div class="rounded-md bg-gray-100 p-4 mt-4">
+							<div
+								class="project rounded-md bg-gray-100 p-4 mt-4"
+							>
 								<div class="flex">
 									<div class="flex-shrink-0">
 										<svg
@@ -258,7 +260,7 @@ import { projects, skills } from "../data";
 								</div><div class="skills-header-char">s</div>
 							</h2>
 							<ul
-								class="grid grid-cols-4 gap-2 md:gap-4 lg:gap-8"
+								class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-8"
 							>
 								{
 									skills &&
@@ -540,9 +542,6 @@ import { projects, skills } from "../data";
 						trigger: "#skills",
 						start: "top 80%",
 						end: "bottom 20%",
-						// toggleActions: "play none none none",
-						// markers: true,
-						// scrub: true,
 					},
 				});
 				skillsTL.from(".skills-header-char", {
@@ -578,6 +577,7 @@ import { projects, skills } from "../data";
 					9: { y: -80, duration: 100 },
 					10: { y: -80, duration: 100 },
 				};
+				const adjustPositions = window.innerWidth >= 770;
 				gsap.utils.toArray(".skill").forEach((skill, i) => {
 					const randomDuration = gsap.utils.random(0.5, 5, 1.5);
 					skillsTL.add(
@@ -589,7 +589,9 @@ import { projects, skills } from "../data";
 						}),
 						"<",
 					);
-					gsap.set(skill, { ...startPositions[i] }, "<");
+					if (adjustPositions) {
+						gsap.set(skill, { ...startPositions[i] }, "<");
+					}
 				});
 				const skillTL = gsap.timeline({
 					defaults: { duration: 100, ease: "none" },
@@ -600,13 +602,15 @@ import { projects, skills } from "../data";
 						end: "400px",
 					},
 				});
-				gsap.utils.toArray(".skill").forEach((skill, i) => {
-					skillTL.to(
-						skill,
-						{ ...endPositions[i], ease: "power1.out" },
-						"<",
-					);
-				});
+				if (adjustPositions) {
+					gsap.utils.toArray(".skill").forEach((skill, i) => {
+						skillTL.to(
+							skill,
+							{ ...endPositions[i], ease: "power1.out" },
+							"<",
+						);
+					});
+				}
 				const connectTL = gsap.timeline({
 					scrollTrigger: {
 						trigger: "#connect",

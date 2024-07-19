@@ -2,7 +2,9 @@
 
 ---
 
-<nav class="sticky top-0 z-50 px-5 pt-5 pb-0 md:pb-5 bg-gray-950 text-white flex justify-between">
+<nav
+    class="sticky top-0 z-50 px-2 pt-2 md:px-5 md:pt-5 pb-0 md:pb-5 bg-gray-950 text-white flex justify-between"
+>
     <ul class="flex flex-row">
         <li>
             <a id="main-nav" href="#main" style="opacity: 0;" class="nav-link"
@@ -10,14 +12,24 @@
             >
         </li>
     </ul>
-    <ul class="md:flex md:flex-row gap-5 text-end">
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#work-experience" class="nav-link">Work Experience</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#connect" class="nav-link">Connect</a></li>
+    <ul class="grid grid-cols-2 grid- md:flex md:flex-row md:gap-5 text-end">
+        <li class="pb-1 md:pb-0 order-2 md:order-1">
+            <a
+                href="/Robert_Abreu_Software_Engineer_Resume.pdf"
+                target="_blank"
+                class="nav-link">Resume</a>
+        </li>
+        <li class="pb-1 md:pb-0 order-1 md:order-2"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="pb-1 md:pb-0 order-3 md:order-last md:hidden"></li>
+        <!-- <li class="pb-1 md:pb-0 invisible order-last md:visible md:order-3"><a href="#work-experience" class="nav-link">Work Experience</a></li> -->
+        <li class="pb-1 md:pb-0 order-4 md:order-3"><a href="#work-experience" class="nav-link">Work History</a></li>
+        <li class="pb-1 md:pb-0 order-5 md:order-last md:hidden"></li>
+        <li class="pb-1 md:pb-0 order-6 md:order-4"><a href="#skills" class="nav-link">Skills</a></li>
+        <li class="pb-1 md:pb-0 order-7 md:order-last md:hidden"></li>
+        <li class="pb-1 md:pb-0 order-last"><a href="#connect" class="nav-link">Connect</a></li>
     </ul>
     <div class="hidden parent">
-      <!-- WIP -->
+        <!-- WIP -->
         <div class="flex justify-end">
             <button
                 type="button"
@@ -46,6 +58,11 @@
             tabindex="-1"
         >
             <div class="flex flex-col text-right py-1" role="none">
+                <a
+                    href="/Robert_Abreu_Software_Engineer_Resume.pdf"
+                    target="_blank"
+                    class="nav-link">Resume</a
+                >
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#work-experience" role="menuitem">Work Experience</a>
                 <a href="#skills" role="menuitem">Skills</a>
