@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import SkillBadge from "./SkillBadge.astro";
 const { href, image, alt, title, description, skills } = Astro.props;
 ---
@@ -21,9 +22,8 @@ const { href, image, alt, title, description, skills } = Astro.props;
                 <h3
                     class="mt-3 text-lg font-semibold leading-6 text-gray-50 text-center group-hover:text-gray-50"
                 >
-                    <a href={href} target="_blank" aria-label={title + " link"}>
-                        <span class="inset-0"></span>
-                        {title}
+                    <a class="flex flex-row justify-center gap-1 align-baseline items-center hover:underline" href={href} target="_blank" aria-label={title + " link"}>
+                        <span class="inset-0">{title}</span> <Icon class="text-sm" name="link-out"/>
                     </a>
                 </h3>
                 <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-50">
