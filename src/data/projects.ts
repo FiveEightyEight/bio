@@ -46,6 +46,19 @@ const projects: Project[] = [
             { icon: "expo", label: "Expo" },
             { icon: "typescript", label: "Typescript" },
         ],
+    },
+    {
+        title: "Palabron",
+        description: "Wordle, pero en Español. An adaptation of the popular word-guessing game Wordle.",
+        alt: "Screenshot of Palabrón",
+        image: "palabron.png",
+        href: "https://palabron.app",
+        skills: [
+            { icon: "astro", label: "Astro" },
+            { icon: "react", label: "React" },
+            { icon: "tailwindcss", label: "Tailwind" },
+            { icon: "typescript", label: "Typescript" },
+        ],
     }
 ];
 export default projects;
