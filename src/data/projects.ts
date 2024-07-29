@@ -48,9 +48,8 @@ const projects: Project[] = [
         ],
     },
     {
-        title: "Palabrón",
-        description:
-            "Wordle, but in Español",
+        title: "Palabron",
+        description: "Wordle, pero en Español. An adaptation of the popular word-guessing game Wordle.",
         alt: "Screenshot of Palabrón",
         image: "palabron.png",
         href: "https://palabron.app",
