@@ -46,6 +46,20 @@ const projects: Project[] = [
             { icon: "expo", label: "Expo" },
             { icon: "typescript", label: "Typescript" },
         ],
+    },
+    {
+        title: "Palabrón",
+        description:
+            "Wordle, but in Español",
+        alt: "Screenshot of Palabrón",
+        image: "palabron.png",
+        href: "https://palabron.app",
+        skills: [
+            { icon: "astro", label: "Astro" },
+            { icon: "react", label: "React" },
+            { icon: "tailwindcss", label: "Tailwind" },
+            { icon: "typescript", label: "Typescript" },
+        ],
     }
 ];
 export default projects;
