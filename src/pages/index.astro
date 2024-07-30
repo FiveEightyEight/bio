@@ -112,6 +112,7 @@ import { projects, skills } from "../data";
 					<p
 						id="subtitle"
 						class="text-lg text-gray-400 md:text-xl lg:text-2xl"
+						style="opacity: 0;"
 					>
 						Welcome
 					</p>
@@ -130,6 +131,7 @@ import { projects, skills } from "../data";
 				</article>
 				<div
 					class="project-button-link grid grid-rows-2 justify-center justify-items-center -mt-40 md:-mt-20 lg:-mt-10"
+					style="opacity: 0;"
 				>
 					<p class="text-md text-gray-50 mb-4 text-center">
 						View Projects
@@ -427,9 +429,9 @@ import { projects, skills } from "../data";
 				gsap.registerPlugin(TextPlugin);
 				const gsapTL = gsap.timeline();
 				gsapTL.set(nameElement, { y: -100, scale: 2.5 });
-				gsapTL.from(nameElement, {
+				gsapTL.to(nameElement, {
 					duration: 0.2,
-					opacity: 0,
+					opacity: 1,
 					delay: 0.4,
 					ease: "power3.out",
 				});
@@ -494,21 +496,21 @@ import { projects, skills } from "../data";
 					delay: 0.2,
 					opacity: 0,
 				}, "<");
-				gsapTL.from(
+				gsapTL.to(
 					".social-links",
 					{
 						stagger: 0.15,
 						duration: 1.8,
 						delay: 0.2,
-						opacity: 0,
+						opacity: 1,
 					},
 					"<",
 				);
-				gsapTL.from(
+				gsapTL.to(
 					".project-button-link",
 					{
 						duration: 1.8,
-						opacity: 0,
+						opacity: 1,
 						delay: 0.7,
 						ease: "power3.out",
 					},
