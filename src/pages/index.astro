@@ -59,7 +59,7 @@ import { projects, skills } from "../data";
 			}
 		</style>
 	</head>
-	<body class="bg-gray-950 max-w-screen-sm overflow-x-hidden">
+	<body class="bg-gray-950">
 		<Nav />
 		<main
 			id="main"
@@ -702,6 +702,9 @@ import { projects, skills } from "../data";
 				});
 				const mobileButton = document.getElementById("menu-button");
 				const mobileMenu = document.getElementById("mobile-menu");
+				if (adjustPositions) {
+					mobileMenu.classList.add("hidden");
+				}
 				const toggleMobileMenu = (event) => {
 					if (mobileMenu.dataset.menu === "closed") {
 						mobileMenu.style.display = "block";
