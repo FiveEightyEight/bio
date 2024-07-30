@@ -701,26 +701,32 @@ import { projects, skills } from "../data";
 					}, 100);
 				});
 				const mobileButton = document.getElementById("menu-button");
-				let menuOpen = false;
 				const mobileMenu = document.getElementById("mobile-menu");
 				const toggleMobileMenu = (event) => {
-					if (!menuOpen) {
+					if (mobileMenu.dataset.menu === "closed") {
 						mobileMenu.style.display = "block";
 						gsap.fromTo(
 							mobileMenu,
 							{ x: "100%" },
-							{ x: "0%", duration: 0.5 },
+							{
+								x: "0%",
+								duration: 0.5,
+								ease: "power3.inOut",
+								onComplete: () => {
+									mobileMenu.dataset.menu = "open";
+								},
+							},
 						);
-						menuOpen = true;
 					} else {
 						gsap.to(mobileMenu, {
 							x: "100%",
 							duration: 0.5,
+							ease: "power3.inOut",
 							onComplete: () => {
 								mobileMenu.style.display = "none";
+								mobileMenu.dataset.menu = "closed";
 							},
 						});
-						menuOpen = false;
 					}
 				};
 				// mobileButton.addEventListener("touchstart", toggleMobileMenu);
