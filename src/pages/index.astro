@@ -53,6 +53,12 @@ import { projects, skills } from "../data";
 			h2 {
 				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 			}
+			.rabreu-pfp-bg {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
+			.rabreu-pfp {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
 			.rabreu {
 				transform: translateY(115px);
 				transition: transform 0.5s;
@@ -72,11 +78,15 @@ import { projects, skills } from "../data";
 					class="flex flex-col h-full my-auto mx-auto max-w-3xl space-y-2 justify-center items-center"
 				>
 					<div class="flex justify-center">
-						<div class="rabreu-pfp-bg hidden w-42 h-42 p-1 rounded-full bg-gray-100">
+						<div
+							class="rabreu-pfp-bg w-42 h-42 p-1 rounded-full bg-gray-100"
+							style="opacity: 0;"
+						>
 							<img
 								src={"robert_abreu_pfp_2.webp"}
 								alt={"Robert Abreu wearing a long sleeve polo with small box pattern on a blue background."}
-								class="rabreu-pfp hidden w-40 h-40 rounded-full object-cover"
+								class="rabreu-pfp w-40 h-40 rounded-full object-cover"
+								style="opacity: 0;"
 							/>
 						</div>
 					</div>
@@ -447,6 +457,34 @@ import { projects, skills } from "../data";
 						duration: 1.5,
 						text: "Software Engineer",
 						ease: "steps(17)",
+					},
+					"<",
+				);
+				gsapTL.fromTo(
+					".rabreu-pfp",
+					{
+						duration: 0.5,
+						y: 100,
+					},
+					{
+						duration: 0.8,
+						opacity: 1,
+						y: 0,
+						ease: "power3.out",
+					},
+				);
+				gsapTL.fromTo(
+					".rabreu-pfp-bg",
+					{
+						delay: 0.5,
+						duration: 0.5,
+						y: 110,
+					},
+					{
+						duration: 1.4,
+						opacity: 1,
+						y: 0,
+						ease: "power3.out",
 					},
 					"<",
 				);
