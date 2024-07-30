@@ -2,6 +2,15 @@
 
 ---
 
+<style is:global>
+    #mobile-menu {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+</style>
 <nav class="sticky top-0 z-50">
     <div
         class="px-2 pt-2 pb-1 md:px-5 md:pt-5 md:pb-5 min-w-fit bg-gray-950 text-white flex justify-between"
@@ -48,10 +57,11 @@
             <div class="flex justify-end">
                 <button
                     type="button"
-                    class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-gray-950 px-3 py-2 text-sm font-semibold text-gray-50 hover:text-gray-950 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 max-w-10"
+                    class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-gray-950 px-3 py-2 text-sm font-semibold text-gray-50 active:text-gray-950 focus:text-gray-950 shadow-sm ring-1 ring-inset ring-gray-300 focus:bg-gray-50 active:bg-gray-50 max-w-10"
                     id="menu-button"
                     aria-expanded="true"
                     aria-haspopup="true"
+                    data-menu="closed"
                 >
                     <svg
                         class="h-5 w-5 white"
@@ -68,24 +78,45 @@
     </div>
     <div
         id="mobile-menu"
-        class="absolute top-0 mt-12 right-0 w-screen flex justify-end visibile md:invisible"
+        class="absolute top-0 mt-12 right-[-60vw] w-screen flex justify-end visibile md:invisible"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="menu-button"
+        data-menu="closed"
         tabindex="-1"
     >
         <div
-            class="flex flex-col float-right p-4 w-1/2 bg-gray-800 border-l-2 border-gray-700 h-[100dvh] md:h-0 text-white text-right"
+            class="flex flex-col float-right p-4 w-1/2 bg-gray-950 border-l-2 border-gray-700 border-opacity-70 bg-opacity-70 h-[100dvh] md:h-0 text-white text-right"
         >
             <a
                 href="/Robert_Abreu_Software_Engineer_Resume.pdf"
                 target="_blank"
-                class="nav-link">Resume</a
+                class="pb-3 hover:underline active:text-white focus:text-white"
+                >Resume</a
             >
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#work-experience" role="menuitem">Work Experience</a>
-            <a href="#skills" role="menuitem">Skills</a>
-            <a href="#connect" role="menuitem">Connect</a>
+            <a
+                href="#projects"
+                class="pb-3 hover:underline active:text-white focus:text-white"
+                >Projects</a
+            >
+            <a
+                href="#work-experience"
+                role="menuitem"
+                class="pb-3 hover:underline active:text-white focus:text-white"
+                >Work History</a
+            >
+            <a
+                href="#skills"
+                role="menuitem"
+                class="pb-3 hover:underline active:text-white focus:text-white"
+                >Skills</a
+            >
+            <a
+                href="#connect"
+                role="menuitem"
+                class="pb-3 hover:underline active:text-white focus:text-white"
+                >Connect</a
+            >
         </div>
     </div>
 </nav>
