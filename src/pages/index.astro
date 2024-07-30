@@ -59,7 +59,7 @@ import { projects, skills } from "../data";
 			}
 		</style>
 	</head>
-	<body class="bg-gray-950">
+	<body class="bg-gray-950 max-w-screen-sm overflow-x-hidden">
 		<Nav />
 		<main
 			id="main"
@@ -701,20 +701,29 @@ import { projects, skills } from "../data";
 					}, 100);
 				});
 				const mobileButton = document.getElementById("menu-button");
+				let menuOpen = false;
 				const mobileMenu = document.getElementById("mobile-menu");
-				let mobileMenuTimeoutId;
 				const toggleMobileMenu = (event) => {
-					clearTimeout(mobileMenuTimeoutId);
-					// debounce with setTimeout
-					mobileMenuTimeoutId = setTimeout(() => {
-						if (mobileMenu.classList.contains("hidden")) {
-							mobileMenu.classList.remove("hidden");
-						} else {
-							mobileMenu.classList.add("hidden");
-						}
-					}, 150);
+					if (!menuOpen) {
+						mobileMenu.style.display = "block";
+						gsap.fromTo(
+							mobileMenu,
+							{ x: "100%" },
+							{ x: "0%", duration: 0.5 },
+						);
+						menuOpen = true;
+					} else {
+						gsap.to(mobileMenu, {
+							x: "100%",
+							duration: 0.5,
+							onComplete: () => {
+								mobileMenu.style.display = "none";
+							},
+						});
+						menuOpen = false;
+					}
 				};
-				mobileButton.addEventListener("touchstart", toggleMobileMenu);
+				// mobileButton.addEventListener("touchstart", toggleMobileMenu);
 				mobileButton.addEventListener("mousedown", toggleMobileMenu);
 			});
 		</script>
