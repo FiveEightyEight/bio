@@ -13,7 +13,7 @@ const projects: Project[] = [
         description:
             "Company site for a customs agency based in the Dominican Republic.",
         alt: "Encarnacion Service Site Preview",
-        image: "encarnacion_services.png",
+        image: "encarnacion_services.webp",
         href: "https://encarnacionservice.com.do/",
         skills: [
             { icon: "astro", label: "Astro" },

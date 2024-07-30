@@ -53,6 +53,12 @@ import { projects, skills } from "../data";
 			h2 {
 				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 			}
+			.rabreu-pfp-bg {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
+			.rabreu-pfp {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
 			.rabreu {
 				transform: translateY(115px);
 				transition: transform 0.5s;
@@ -68,9 +74,22 @@ import { projects, skills } from "../data";
 			<header
 				class="-mt-24 md:-mt-10 px-4 py-8 md:px-6 md:py-12 lg:px-8 lg:py-16 xl:px-10 xl:py-20 h-screen"
 			>
-				<div
+				<article
 					class="flex flex-col h-full my-auto mx-auto max-w-3xl space-y-2 justify-center items-center"
 				>
+					<div class="flex justify-center">
+						<div
+							class="rabreu-pfp-bg w-42 h-42 p-1 rounded-full bg-gray-100"
+							style="opacity: 0;"
+						>
+							<img
+								src="robert_abreu_pfp.webp"
+								alt="Robert Abreu wearing a long sleeve polo with small box pattern on a blue background."
+								class="rabreu-pfp w-40 h-40 rounded-full object-cover"
+								style="opacity: 0;"
+							/>
+						</div>
+					</div>
 					<h1
 						class="flex flex-row text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
 					>
@@ -93,6 +112,7 @@ import { projects, skills } from "../data";
 					<p
 						id="subtitle"
 						class="text-lg text-gray-400 md:text-xl lg:text-2xl"
+						style="opacity: 0;"
 					>
 						Welcome
 					</p>
@@ -108,9 +128,10 @@ import { projects, skills } from "../data";
 							label="LinkedIn"
 						/>
 					</div>
-				</div>
+				</article>
 				<div
 					class="project-button-link grid grid-rows-2 justify-center justify-items-center -mt-40 md:-mt-20 lg:-mt-10"
+					style="opacity: 0;"
 				>
 					<p class="text-md text-gray-50 mb-4 text-center">
 						View Projects
@@ -408,14 +429,14 @@ import { projects, skills } from "../data";
 				gsap.registerPlugin(TextPlugin);
 				const gsapTL = gsap.timeline();
 				gsapTL.set(nameElement, { y: -100, scale: 2.5 });
-				gsapTL.from(nameElement, {
-					duration: 0.3,
-					opacity: 0,
+				gsapTL.to(nameElement, {
+					duration: 0.2,
+					opacity: 1,
 					delay: 0.4,
 					ease: "power3.out",
 				});
 				gsapTL.to(nameElement, {
-					duration: 1.8,
+					duration: 1.2,
 					delay: 0.5,
 					scale: 1,
 					y: 0,
@@ -441,27 +462,55 @@ import { projects, skills } from "../data";
 					},
 					"<",
 				);
+				gsapTL.fromTo(
+					".rabreu-pfp",
+					{
+						duration: 0.5,
+						y: 100,
+					},
+					{
+						duration: 0.8,
+						opacity: 1,
+						y: 0,
+						ease: "power3.out",
+					},
+				);
+				gsapTL.fromTo(
+					".rabreu-pfp-bg",
+					{
+						delay: 0.5,
+						duration: 1,
+						y: 110,
+					},
+					{
+						duration: 1.5,
+						opacity: 1,
+						y: 0,
+						ease: "power3.out",
+					},
+					"<",
+				);
 				gsapTL.from(".nav-link", {
 					stagger: 0.15,
 					duration: 1.8,
 					delay: 0.2,
 					opacity: 0,
-				});
-				gsapTL.from(
+				}, "<");
+				gsapTL.to(
 					".social-links",
 					{
 						stagger: 0.15,
 						duration: 1.8,
 						delay: 0.2,
-						opacity: 0,
+						opacity: 1,
 					},
 					"<",
 				);
-				gsapTL.from(
+				gsapTL.to(
 					".project-button-link",
 					{
 						duration: 1.8,
-						opacity: 0,
+						opacity: 1,
 						delay: 0.7,
 						ease: "power3.out",
 					},
