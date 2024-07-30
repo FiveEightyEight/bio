@@ -428,13 +428,13 @@ import { projects, skills } from "../data";
 				const gsapTL = gsap.timeline();
 				gsapTL.set(nameElement, { y: -100, scale: 2.5 });
 				gsapTL.from(nameElement, {
-					duration: 0.3,
+					duration: 0.2,
 					opacity: 0,
 					delay: 0.4,
 					ease: "power3.out",
 				});
 				gsapTL.to(nameElement, {
-					duration: 1.8,
+					duration: 1.2,
 					delay: 0.5,
 					scale: 1,
 					y: 0,
@@ -477,11 +477,11 @@ import { projects, skills } from "../data";
 					".rabreu-pfp-bg",
 					{
 						delay: 0.5,
-						duration: 0.5,
+						duration: 1,
 						y: 110,
 					},
 					{
-						duration: 1.4,
+						duration: 1.5,
 						opacity: 1,
 						y: 0,
 						ease: "power3.out",
@@ -493,7 +493,7 @@ import { projects, skills } from "../data";
 					duration: 1.8,
 					delay: 0.2,
 					opacity: 0,
-				});
+				}, "<");
 				gsapTL.from(
 					".social-links",
 					{
