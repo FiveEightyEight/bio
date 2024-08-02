@@ -490,11 +490,11 @@ import { projects, skills } from "../data";
 					},
 					"<",
 				);
-				gsapTL.from(".nav-link", {
+				gsapTL.to(".nav-link", {
 					stagger: 0.15,
 					duration: 1.8,
 					delay: 0.2,
-					opacity: 0,
+					opacity: 1,
 				}, "<");
 				gsapTL.to(
 					".social-links",
