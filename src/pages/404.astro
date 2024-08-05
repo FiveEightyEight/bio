@@ -1,0 +1,120 @@
+---
+import SEO from "../components/SEO.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <SEO />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="R_NBG_WHITE.svg"
+            media="(prefers-color-scheme: dark)"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="R_NBG_BLACK.svg"
+            media="(prefers-color-scheme: light)"
+        />
+    </head>
+    <body class="bg-gray-950">
+        <nav class="sticky top-0 z-50">
+            <div
+                class="px-2 pt-2 pb-1 md:px-5 md:pt-5 md:pb-5 min-w-fit bg-gray-950 text-white flex justify-between"
+            >
+                <ul class="flex flex-row order-1">
+                    <li>
+                        <a
+                            id="main-nav"
+                            href="#main"
+                            style="opacity: 0;"
+                            class="">Robert Abreu</a
+                        >
+                    </li>
+                </ul>
+                <ul
+                    class="invisible md:visible h-0 md:h-full grid grid-cols-2 md:flex md:flex-row md:gap-5 text-end order-2 md:order-3"
+                >
+                    <li class="pb-1 md:pb-0">
+                        <a
+                            style="opacity: 0;"
+                            aria-labelledby="go to home page"
+                            href="/"
+                            target="_self"
+                            class="nav-link pb-1 hover:underline hover:decoration-2 hover:decoration-sky-400"
+                        >
+                            Return Home
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- <Nav /> -->
+        <main class="text-gray-50 text">
+            <section class="flex flex-row justify-center">
+                <!-- FOUR -->
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12rem"
+                    height="12rem"
+                    viewBox="0 0 256 256"
+                    ><path
+                        fill="currentColor"
+                        d="M184 160h-16V48a8 8 0 0 0-14.25-5l-96 120A8 8 0 0 0 64 176h88v32a8 8 0 0 0 16 0v-32h16a8 8 0 0 0 0-16m-32 0H80.64L152 70.81Z"
+                    ></path></svg
+                >
+                <!-- ZERO -->
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12rem"
+                    height="12rem"
+                    viewBox="0 0 256 256"
+                    ><path
+                        fill="currentColor"
+                        d="M183.25 63.2C170.25 42.79 151.15 32 128 32S85.75 42.79 72.75 63.2C62 80.18 56 103.19 56 128s6 47.82 16.75 64.8c13 20.41 32.1 31.2 55.25 31.2s42.25-10.79 55.25-31.2c10.8-17 16.75-40 16.75-64.8s-5.95-47.82-16.75-64.8M128 208c-38.68 0-56-40.18-56-80s17.32-80 56-80s56 40.18 56 80s-17.32 80-56 80"
+                    ></path></svg
+                >
+                <!-- FOUR -->
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12rem"
+                    height="12rem"
+                    viewBox="0 0 256 256"
+                    ><path
+                        fill="currentColor"
+                        d="M184 160h-16V48a8 8 0 0 0-14.25-5l-96 120A8 8 0 0 0 64 176h88v32a8 8 0 0 0 16 0v-32h16a8 8 0 0 0 0-16m-32 0H80.64L152 70.81Z"
+                    ></path></svg
+                >
+            </section>
+        </main>
+        <script
+            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"
+            is:inline></script>
+        <script type="module" is:inline>
+            import gsap from "https://cdn.skypack.dev/gsap";
+            document.addEventListener("DOMContentLoaded", function () {
+                gsap.registerPlugin(CustomEase);
+                const fourZeroFourTL = gsap.timeline();
+                fourZeroFourTL.to(
+                    ".nav-link",
+                    {
+                        stagger: 0.15,
+                        duration: 1.8,
+                        delay: 0.2,
+                        opacity: 1,
+                    },
+                    "<",
+                );
+                CustomEase.create(
+                    "bouncy",
+                    "M0,0 C0.173,0 0.247,1 0.247,1 0.247,1 0.271,1 0.271,1 0.271,1 0.308,0.51 0.416,0.51 0.502,0.51 0.566,1 0.566,1 0.566,1 0.578,1 0.578,1 0.578,1 0.606,0.783 0.664,0.783 0.71,0.783 0.753,1 0.753,1 0.753,1 0.758,1 0.758,1 0.758,1 0.776,0.913 0.809,0.913 0.836,0.913 0.862,1 0.862,1 0.862,1 0.865,1 0.865,1 0.865,1 0.874,0.968 0.895,0.968 0.912,0.968 0.927,1 0.927,1 0.927,1 0.927,1 0.927,1 0.927,1 0.932,0.989 0.945,0.989 0.956,0.989 0.964,1 0.964,1 0.964,1 0.964,1 0.964,1 0.964,1 0.967,0.997 0.975,0.997 0.982,0.997 0.986,1 0.986,1 0.986,1 0.986,1 0.986,1 0.986,1 0.988,0.999 0.993,0.999 0.997,0.999 1,1 1,1 ",
+                );
+            });
+        </script>
+    </body>
+</html>
