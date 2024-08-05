@@ -103,6 +103,23 @@ import SEO from "../components/SEO.astro";
                 >
                     oops..
                 </p>
+                <noscript>
+                    <p
+                        class="text-center text-gray-50 text-wrap px-14 text-lg"
+                    >
+                    It appears the page you're looking for does not exist...
+                    </p>
+                    <div class="grid place-content-center my-5">
+                        <a
+                            aria-labelledby="go to home page"
+                            href="/"
+                            target="_self"
+                            class="pb-1 underline md:no-underline hover:underline hover:decoration-2 hover:decoration-sky-400"
+                        >
+                            Return Home
+                        </a>
+                    </div>
+                </noscript>
             </section>
             <div class="grid place-content-center my-5">
                 <a
@@ -166,15 +183,12 @@ import SEO from "../components/SEO.astro";
                     },
                     "<",
                 );
-                fourZeroFourTL.to(
-                    ".bottom-link",
-                    {
-                        stagger: 0.15,
-                        duration: 1.8,
-                        delay: 0.2,
-                        opacity: 1,
-                    },
-                );
+                fourZeroFourTL.to(".bottom-link", {
+                    stagger: 0.15,
+                    duration: 1.8,
+                    delay: 0.2,
+                    opacity: 1,
+                });
                 // CustomEase.create(
                 //     "bouncy",
                 //     "M0,0 C0.173,0 0.247,1 0.247,1 0.247,1 0.271,1 0.271,1 0.271,1 0.308,0.51 0.416,0.51 0.502,0.51 0.566,1 0.566,1 0.566,1 0.578,1 0.578,1 0.578,1 0.606,0.783 0.664,0.783 0.71,0.783 0.753,1 0.753,1 0.753,1 0.758,1 0.758,1 0.758,1 0.776,0.913 0.809,0.913 0.836,0.913 0.862,1 0.862,1 0.862,1 0.865,1 0.865,1 0.865,1 0.874,0.968 0.895,0.968 0.912,0.968 0.927,1 0.927,1 0.927,1 0.927,1 0.927,1 0.927,1 0.932,0.989 0.945,0.989 0.956,0.989 0.964,1 0.964,1 0.964,1 0.964,1 0.964,1 0.964,1 0.967,0.997 0.975,0.997 0.982,0.997 0.986,1 0.986,1 0.986,1 0.986,1 0.986,1 0.986,1 0.988,0.999 0.993,0.999 0.997,0.999 1,1 1,1 ",
