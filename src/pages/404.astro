@@ -19,6 +19,11 @@ import SEO from "../components/SEO.astro";
             href="R_NBG_BLACK.svg"
             media="(prefers-color-scheme: light)"
         />
+        <style>
+            #four_oh_four {
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+			}
+        </style>
     </head>
     <body class="bg-gray-950">
         <nav class="sticky top-0 z-50">
@@ -52,41 +57,46 @@ import SEO from "../components/SEO.astro";
                 </ul>
             </div>
         </nav>
-        <main class="text-gray-50 text">
-            <section class="flex flex-row justify-center">
-                <!-- FOUR -->
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12rem"
-                    height="12rem"
-                    viewBox="0 0 256 256"
-                    ><path
-                        fill="currentColor"
-                        d="M184 160h-16V48a8 8 0 0 0-14.25-5l-96 120A8 8 0 0 0 64 176h88v32a8 8 0 0 0 16 0v-32h16a8 8 0 0 0 0-16m-32 0H80.64L152 70.81Z"
-                    ></path></svg
-                >
-                <!-- ZERO -->
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12rem"
-                    height="12rem"
-                    viewBox="0 0 256 256"
-                    ><path
-                        fill="currentColor"
-                        d="M183.25 63.2C170.25 42.79 151.15 32 128 32S85.75 42.79 72.75 63.2C62 80.18 56 103.19 56 128s6 47.82 16.75 64.8c13 20.41 32.1 31.2 55.25 31.2s42.25-10.79 55.25-31.2c10.8-17 16.75-40 16.75-64.8s-5.95-47.82-16.75-64.8M128 208c-38.68 0-56-40.18-56-80s17.32-80 56-80s56 40.18 56 80s-17.32 80-56 80"
-                    ></path></svg
-                >
-                <!-- FOUR -->
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="12rem"
-                    height="12rem"
-                    viewBox="0 0 256 256"
-                    ><path
-                        fill="currentColor"
-                        d="M184 160h-16V48a8 8 0 0 0-14.25-5l-96 120A8 8 0 0 0 64 176h88v32a8 8 0 0 0 16 0v-32h16a8 8 0 0 0 0-16m-32 0H80.64L152 70.81Z"
-                    ></path></svg
-                >
+        <main class="text-gray-50">
+            <section class="flex flex-col justify-center">
+                <div id="four_oh_four" class="flex flex-row justify-center">
+                    <!-- FOUR -->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12rem"
+                        height="12rem"
+                        viewBox="0 0 256 256"
+                        ><path
+                            fill="currentColor"
+                            d="M184 160h-16V48a8 8 0 0 0-14.25-5l-96 120A8 8 0 0 0 64 176h88v32a8 8 0 0 0 16 0v-32h16a8 8 0 0 0 0-16m-32 0H80.64L152 70.81Z"
+                        ></path></svg
+                    >
+                    <!-- ZERO -->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12rem"
+                        height="12rem"
+                        viewBox="0 0 256 256"
+                        ><path
+                            fill="currentColor"
+                            d="M183.25 63.2C170.25 42.79 151.15 32 128 32S85.75 42.79 72.75 63.2C62 80.18 56 103.19 56 128s6 47.82 16.75 64.8c13 20.41 32.1 31.2 55.25 31.2s42.25-10.79 55.25-31.2c10.8-17 16.75-40 16.75-64.8s-5.95-47.82-16.75-64.8M128 208c-38.68 0-56-40.18-56-80s17.32-80 56-80s56 40.18 56 80s-17.32 80-56 80"
+                        ></path></svg
+                    >
+                    <!-- FOUR -->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12rem"
+                        height="12rem"
+                        viewBox="0 0 256 256"
+                        ><path
+                            fill="currentColor"
+                            d="M184 160h-16V48a8 8 0 0 0-14.25-5l-96 120A8 8 0 0 0 64 176h88v32a8 8 0 0 0 16 0v-32h16a8 8 0 0 0 0-16m-32 0H80.64L152 70.81Z"
+                        ></path></svg
+                    >
+                </div>
+                <p class="text-center" style="opacity: 0;">
+                    It appears the page you're looking for does not exist...
+                </p>
             </section>
         </main>
         <script
