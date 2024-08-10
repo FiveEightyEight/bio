@@ -345,7 +345,7 @@ import { projects, skills } from "../data";
 									onsubmit="this.submit(); this.reset(); return false;"
 								>
 									<div
-										class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2"
+										class="grid grid-cols-1 gap-y-6 sm:grid-cols-2"
 									>
 										<div class="connect-field col-span-2">
 											<label
@@ -381,7 +381,7 @@ import { projects, skills } from "../data";
 											</div>
 										</div>
 										<div
-											class="connect-field sm:col-span-2"
+											class="connect-field col-span-2"
 										>
 											<label
 												for="message"
@@ -547,7 +547,7 @@ import { projects, skills } from "../data";
 				workXpTL.from(
 					"#work-experience-content",
 					{
-						duration: 1.8,
+						duration: .8,
 						opacity: 0,
 					},
 					"<",
@@ -557,7 +557,7 @@ import { projects, skills } from "../data";
 					scrollTrigger: {
 						trigger: "#projects",
 						start: "top 80%",
-						end: "bottom 20%",
+						end: "bottom 5%",
 						toggleActions: "play none none none",
 					},
 				});
