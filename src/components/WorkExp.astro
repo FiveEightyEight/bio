@@ -84,3 +84,46 @@
         </div>
     </div>
 </div>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+    is:inline></script>
+<script type="module" is:inline>
+    import gsap from "https://cdn.skypack.dev/gsap";
+    gsap.registerPlugin(ScrollTrigger);
+    const workXpTL = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".xp-right",
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+        },
+    });
+    workXpTL.from(".xp-right", {
+        y: 50,
+        stagger: 0.09,
+        delay: 0.3,
+        duration: 0.5,
+        ease: "power3.out",
+        reversed: true,
+    });
+    workXpTL.from(
+        ".xp-left",
+        {
+            y: 50,
+            stagger: 0.09,
+            delay: 0.2,
+            duration: 0.5,
+            ease: "power3.out",
+        },
+        "<",
+    );
+    workXpTL.from(
+        "#work-experience-content",
+        {
+            duration: 0.8,
+            opacity: 0,
+        },
+        "<",
+    );
+</script>
