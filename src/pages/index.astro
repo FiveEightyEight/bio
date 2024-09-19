@@ -3,7 +3,7 @@ import "@fontsource/geist-sans";
 import { Icon } from "astro-icon/components";
 import Nav from "../components/Nav.astro";
 import ProjectItem from "../components/ProjectItem.astro";
-import WorkExp from "../components/WorkExp.astro";
+import AboutMe from "../components/AboutMe.astro";
 import Footer from "../components/Footer.astro";
 import SEO from "../components/SEO.astro";
 import Skill from "../components/Skill.astro";
@@ -225,6 +225,8 @@ import { projects, skills } from "../data";
 								</div>
 							</div>
 						</div>
+
+						<AboutMe />
 
 						<div
 							id="skills"
@@ -483,24 +485,17 @@ import { projects, skills } from "../data";
 					"<",
 				);
 				gsap.registerPlugin(ScrollTrigger);
-				const workXpTL = gsap.timeline({
+				const AboutMeTL = gsap.timeline({
 					scrollTrigger: {
-						trigger: ".xp-right",
+						trigger: ".about-me-right",
 						start: "top 80%",
 						end: "bottom 20%",
 						toggleActions: "play none none none",
 					},
 				});
-				workXpTL.from(".xp-right", {
-					y: 50,
-					stagger: 0.09,
-					delay: 0.3,
-					duration: 0.5,
-					ease: "power3.out",
-					reversed: true,
-				});
-				workXpTL.from(
-					".xp-left",
+				
+				AboutMeTL.from(
+					".about-me-char",
 					{
 						y: 50,
 						stagger: 0.09,
@@ -508,15 +503,21 @@ import { projects, skills } from "../data";
 						duration: 0.5,
 						ease: "power3.out",
 					},
-					"<",
 				);
-				workXpTL.from(
-					"#work-experience-content",
+
+				AboutMeTL.from(".about-me-right", {
+					y: 50,
+					stagger: 0.09,
+					duration: 0.5,
+					ease: "power3.out",
+					reversed: true,
+				}, "<");
+				AboutMeTL.from(
+					"#about-me-content",
 					{
 						duration: 0.8,
 						opacity: 0,
 					},
-					"<",
 				);
 
 				const projectsTL = gsap.timeline({
