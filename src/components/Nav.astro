@@ -1,5 +1,5 @@
 ---
-
+import MenuIcon from "./icons/menu.astro";
 ---
 
 <style is:global>
@@ -17,8 +17,14 @@
     >
         <ul class="flex flex-row order-1">
             <li>
-                <a id="main-nav" href="#main" class="flex flex-row ">
-                    <div id="first-rob-char" class="rob-char" style="opacity: 0;">R</div>
+                <a id="main-nav" href="#main" class="flex flex-row">
+                    <div
+                        id="first-rob-char"
+                        class="rob-char"
+                        style="opacity: 0;"
+                    >
+                        R
+                    </div>
                     <div class="rob-char" style="opacity: 0;">o</div>
                     <div class="rob-char" style="opacity: 0;">b</div>
                     <div class="rob-char" style="opacity: 0;">e</div>
@@ -29,7 +35,13 @@
                     <div class="rob-char" style="opacity: 0;">b</div>
                     <div class="rob-char" style="opacity: 0;">r</div>
                     <div class="rob-char" style="opacity: 0;">e</div>
-                    <div id="last-rob-char" class="rob-char" style="opacity: 0;">u</div>
+                    <div
+                        id="last-rob-char"
+                        class="rob-char"
+                        style="opacity: 0;"
+                    >
+                        u
+                    </div>
                 </a>
             </li>
         </ul>
@@ -95,15 +107,7 @@
                     aria-haspopup="true"
                     data-menu="closed"
                 >
-                    <svg
-                        class="h-5 w-5 white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                        ><path
-                            d="m19 11h-18c-.265216 0-.51957-.1054-.707107-.2929-.187536-.1875-.292893-.4419-.292893-.7071 0-.26522.105357-.51957.292893-.70711.187537-.18753.441891-.29289.707107-.29289h18c.2652 0 .5196.10536.7071.29289.1875.18754.2929.44189.2929.70711 0 .2652-.1054.5196-.2929.7071s-.4419.2929-.7071.2929zm0-7h-18c-.265216 0-.51957-.10536-.707107-.29289-.187536-.18754-.292893-.44189-.292893-.70711s.105357-.51957.292893-.70711c.187537-.18753.441891-.29289.707107-.29289h18c.2652 0 .5196.10536.7071.29289.1875.18754.2929.44189.2929.70711s-.1054.51957-.2929.70711c-.1875.18753-.4419.29289-.7071.29289zm0 14h-18c-.265216 0-.51957-.1054-.707107-.2929-.187536-.1875-.292893-.4419-.292893-.7071s.105357-.5196.292893-.7071c.187537-.1875.441891-.2929.707107-.2929h18c.2652 0 .5196.1054.7071.2929s.2929.4419.2929.7071-.1054.5196-.2929.7071-.4419.2929-.7071.2929z"
-                            fill="currentColor"></path></svg
-                    >
+                    <MenuIcon class="h-5 w-5 white" id="nav-mobile-menu-icon" />
                 </button>
             </div>
         </div>
@@ -152,3 +156,70 @@
         </div>
     </div>
 </nav>
+
+<script>
+    import gsap from "gsap";
+    const mobileButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuIconPath = document.getElementById("menu-icon-path");
+    const stackShape = "M5 5L12 5L19 5M5 12H19M5 19L12 19L19 19";
+    const closeShape = "M5 5L12 12L19 5M12 12H12M5 19L12 12L19 19";
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleMobileMenu = () => {
+            if (!mobileMenu || !mobileButton) return;
+            if (mobileMenu.dataset.menu === "closed") {
+                mobileMenu.style.display = "block";
+                gsap.fromTo(
+                    mobileMenu,
+                    { x: "100%" },
+                    {
+                        x: "0%",
+                        duration: 0.5,
+                        ease: "power3.inOut",
+                        onComplete: () => {
+                            mobileMenu.dataset.menu = "open";
+                        },
+                    },
+                );
+                // opentimeline
+                gsap.fromTo(
+                    mobileMenuIconPath,
+                    {
+                        attr: { d: stackShape },
+                        duration: 0.5,
+                        ease: "Power2.easeOut"
+                    },
+                    {
+                        attr: { d: closeShape },
+                        duration: 0.5,
+                        ease: "Power2.easeIn"
+                    },
+                );
+            } else {
+                gsap.to(mobileMenu, {
+                    x: "100%",
+                    duration: 0.5,
+                    ease: "power3.inOut",
+                    onComplete: () => {
+                        mobileMenu.style.display = "none";
+                        mobileMenu.dataset.menu = "closed";
+                    },
+                });
+                gsap.fromTo(
+                    mobileMenuIconPath,
+                    {
+                        attr: { d: closeShape },
+                        duration: 0.5,
+                        ease: "Power2.easeOut"
+                    },
+                    {
+                        attr: { d: stackShape },
+                        duration: 0.5,
+                        ease: "Power2.easeIn"
+                    },
+                );
+            }
+        };
+        mobileButton?.addEventListener("mousedown", toggleMobileMenu);
+    });
+</script>
