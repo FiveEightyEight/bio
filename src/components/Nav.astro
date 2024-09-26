@@ -167,7 +167,7 @@ import MenuIcon from "./icons/menu.astro";
     document.addEventListener("DOMContentLoaded", function () {
         const toggleMobileMenu = () => {
             if (!mobileMenu || !mobileButton) return;
-            if (mobileMenu.dataset.menu === "closed") {
+            if (/* mobile menu is closed */ mobileMenu.dataset.menu === "closed") {
                 mobileMenu.style.display = "block";
                 gsap.fromTo(
                     mobileMenu,
@@ -221,5 +221,6 @@ import MenuIcon from "./icons/menu.astro";
             }
         };
         mobileButton?.addEventListener("mousedown", toggleMobileMenu);
+        mobileMenu?.addEventListener("closeMenu", toggleMobileMenu);
     });
 </script>

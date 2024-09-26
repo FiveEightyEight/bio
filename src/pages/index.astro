@@ -652,6 +652,8 @@ import { projects, skills } from "../data";
 					},
 					"<",
 				);
+				const mobileMenu = document.getElementById("mobile-menu");
+				const closeMenuEvent = new Event("closeMenu");
 				gsap.registerPlugin(ScrollToPlugin);
 				function getSamePageAnchor(link) {
 					if (
@@ -671,6 +673,10 @@ import { projects, skills } from "../data";
 					const elem = hash ? document.querySelector(hash) : false;
 					if (elem) {
 						if (e) e.preventDefault();
+						/* check if mobile menu is open */
+						if (mobileMenu.dataset.menu !== "closed") {
+							mobileMenu.dispatchEvent(closeMenuEvent);
+						}
 						const nav = document.querySelector("nav");
 						gsap.to(window, {
 							scrollTo: {
