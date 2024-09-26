@@ -159,6 +159,7 @@ import MenuIcon from "./icons/menu.astro";
 
 <script>
     import gsap from "gsap";
+    const body = document.querySelector("body");
     const mobileButton = document.getElementById("menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
     const mobileMenuIconPath = document.getElementById("menu-icon-path");
@@ -178,6 +179,7 @@ import MenuIcon from "./icons/menu.astro";
                         ease: "power3.inOut",
                         onComplete: () => {
                             mobileMenu.dataset.menu = "open";
+                            body?.classList.add('no-scroll');
                         },
                     },
                 );
@@ -203,6 +205,7 @@ import MenuIcon from "./icons/menu.astro";
                     onComplete: () => {
                         mobileMenu.style.display = "none";
                         mobileMenu.dataset.menu = "closed";
+                        body?.classList.remove('no-scroll');
                     },
                 });
                 gsap.fromTo(
