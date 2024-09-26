@@ -1,4 +1,5 @@
 ---
+import LinkOut from "./icons/link_out.astro";
 import MenuIcon from "./icons/menu.astro";
 ---
 
@@ -56,7 +57,9 @@ import MenuIcon from "./icons/menu.astro";
                     target="_blank"
                     class="nav-link pb-1 hover:underline hover:decoration-2 hover:decoration-sky-400"
                 >
-                    Resume
+                    <div class="flex justify-end place-items-center">
+                        Resume&nbsp;<LinkOut />
+                    </div>
                 </a>
             </li>
             <li class="pb-1 md:pb-0">
@@ -128,7 +131,9 @@ import MenuIcon from "./icons/menu.astro";
                 href="/Robert_Abreu_Software_Engineer_Resume.pdf"
                 target="_blank"
                 class="pb-3 hover:underline active:text-white focus:text-white"
-                >Resume</a
+                ><div class="flex justify-end place-items-center">
+                    Resume&nbsp;<LinkOut />
+                </div></a
             >
             <a
                 href="#projects"
@@ -168,7 +173,9 @@ import MenuIcon from "./icons/menu.astro";
     document.addEventListener("DOMContentLoaded", function () {
         const toggleMobileMenu = () => {
             if (!mobileMenu || !mobileButton) return;
-            if (/* mobile menu is closed */ mobileMenu.dataset.menu === "closed") {
+            if (
+                /* mobile menu is closed */ mobileMenu.dataset.menu === "closed"
+            ) {
                 mobileMenu.style.display = "block";
                 gsap.fromTo(
                     mobileMenu,
@@ -179,7 +186,7 @@ import MenuIcon from "./icons/menu.astro";
                         ease: "power3.inOut",
                         onComplete: () => {
                             mobileMenu.dataset.menu = "open";
-                            body?.classList.add('no-scroll');
+                            body?.classList.add("no-scroll");
                         },
                     },
                 );
@@ -189,12 +196,12 @@ import MenuIcon from "./icons/menu.astro";
                     {
                         attr: { d: stackShape },
                         duration: 0.5,
-                        ease: "Power2.easeOut"
+                        ease: "Power2.easeOut",
                     },
                     {
                         attr: { d: closeShape },
                         duration: 0.5,
-                        ease: "Power2.easeIn"
+                        ease: "Power2.easeIn",
                     },
                 );
             } else {
@@ -205,7 +212,7 @@ import MenuIcon from "./icons/menu.astro";
                     onComplete: () => {
                         mobileMenu.style.display = "none";
                         mobileMenu.dataset.menu = "closed";
-                        body?.classList.remove('no-scroll');
+                        body?.classList.remove("no-scroll");
                     },
                 });
                 gsap.fromTo(
@@ -213,12 +220,12 @@ import MenuIcon from "./icons/menu.astro";
                     {
                         attr: { d: closeShape },
                         duration: 0.5,
-                        ease: "Power2.easeOut"
+                        ease: "Power2.easeOut",
                     },
                     {
                         attr: { d: stackShape },
                         duration: 0.5,
-                        ease: "Power2.easeIn"
+                        ease: "Power2.easeIn",
                     },
                 );
             }
